@@ -7,17 +7,17 @@ Neste programa sera possivel via linha de comandos realizar os seguintes comando
 
 - Funções Clientes:
     - [ ] Cadastar.
-    - Listar.
-    - Alterar.
+    - [ ] Listar.
+    - [ ] Alterar.
 
 - Funções Funcionarios:
-    - Cadastrar.
-    - Listar.
-    - Alterar.
+    - [ ] Cadastrar.
+    - [ ] Listar.
+    - [ ] Alterar.
 
 - Funções Filmes:
-    - Cadastrar.
-    - Listar.
-    - Alterar.
+    - [ ] Cadastrar.
+    - [ ] Listar.
+    - [ ] Alterar.
 
 **Codigo Criado por todos os colaboradores cadastrados no projeto.**

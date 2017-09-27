@@ -1,5 +1,3 @@
-package loca.filmes;
-
 public class Pessoas {
     private String nome;
     private int idade;

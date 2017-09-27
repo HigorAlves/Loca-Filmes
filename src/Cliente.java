@@ -1,5 +1,3 @@
-package loca.filmes;
-
 import java.util.Scanner;
 
 public class Cliente extends Pessoas {

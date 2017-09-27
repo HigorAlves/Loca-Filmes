@@ -14,10 +14,9 @@ public class CriarMenu {
            System.out.println("1. Cliente");
            System.out.println("2. Filmes");
            System.out.println("3. Funcionarios");
+           System.out.println("0. Sair do Programa");
            System.out.print("Opção: ");
            op = scan.nextInt();
-           System.out.println("---------------------------------");
-           
            switch (op){
                case 1:
                    MenuCliente();
@@ -41,8 +40,7 @@ public class CriarMenu {
        List<Cliente> clientes;
        clientes = new LinkedList<>();
        do{ 
-           System.out.println("\n---------- Loca Filmes ----------");
-           System.out.println("---------- Clientes ----------");
+           System.out.println("\n---------- Loca Filmes | Clientes ----------");
            System.out.println("1. Cadastrar");
            System.out.println("2. Excluir Cadastro");
            System.out.println("3. Alterar Cadastro");

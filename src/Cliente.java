@@ -40,7 +40,8 @@ public class Cliente extends Pessoas {
     
     public void Cadastrar(int id){
         setId(id);
-        Scanner scan = new Scanner(System.in);
+        System.out.println("O ID do cliente sera: " + id);
+		Scanner scan = new Scanner(System.in);
         System.out.print("\nQual nome do Cliente? ");
         setNome(scan.next());
         System.out.print("Qual endereço? ");
@@ -54,7 +55,4 @@ public class Cliente extends Pessoas {
         setDevendo(false);
     }
     
-    public void Excluir(){
-        
-    }
 }

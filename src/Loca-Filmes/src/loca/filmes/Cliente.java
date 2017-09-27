@@ -45,13 +45,13 @@ public class Cliente extends Pessoas {
         Scanner scan = new Scanner(System.in);
         System.out.print("\nQual nome do Cliente? ");
         setNome(scan.next());
-        System.out.print("\nQual endereço? ");
+        System.out.print("Qual endereço? ");
         setEndereco(scan.next());
-        System.out.print("\nQual idade? ");
+        System.out.print("Qual idade? ");
         setIdade(scan.nextInt());
-        System.out.print("\nQual o telefone? ");
+        System.out.print("Qual o telefone? ");
         setTelefone(scan.next());
-        System.out.print("\nCliente cadastrado com Sucesso!");
+        System.out.print("Cliente cadastrado com Sucesso!");
         setComFilme(false);
         setDevendo(false);
     }

@@ -1,14 +1,10 @@
 package loca.filmes;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
 public class CriarMenu {
-   private final int limiteClientes = 100;
-   private final int limiteFuncionarios = 10;
-   private final int limiteFilmes = 100;
    private int i = 1, j=1;
    
    public void MenuPrincipal(){
@@ -48,7 +44,7 @@ public class CriarMenu {
        clientes = new LinkedList<>();
        do{ 
            System.out.println("\n---------- Loca Filmes ----------");
-           System.out.println("----------Clientes----------");
+           System.out.println("---------- Clientes ----------");
            System.out.println("1. Cadastrar");
            System.out.println("2. Excluir Cadastro");
            System.out.println("3. Alterar Cadastro");
@@ -71,7 +67,7 @@ public class CriarMenu {
                    for (Cliente e: clientes){
                        if (e.getId() == j){
                            System.out.println("\nAchei os dados do cliente que você quer deletar ");
-                           System.out.println("ID: " + e.getId() + " Nome: " + " Telefone: " + e.getTelefone());
+                           System.out.println("ID: " + e.getId() + " Nome: " + e.getNome() + " Telefone: " + e.getTelefone());
                            clientes.remove(e);
                        }
                    }
@@ -79,7 +75,7 @@ public class CriarMenu {
                    
                case 5:
                    for (Cliente e: clientes){
-                       System.out.println("Nome: " + e.getNome());
+                       System.out.println("| ID: " + e.getId() + " | Nome: " + e.getNome());
                    }
                    break;
                    

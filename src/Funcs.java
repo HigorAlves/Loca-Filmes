@@ -102,4 +102,23 @@ public class Funcs {
 			}
 		}
 	}
+	
+	public void AlterarFilme(List<Filmes> filmes, Scanner scan) {
+		System.out.print("Insira o codigo do filme que deseja alterar: ");
+		int j = scan.nextInt();
+		for (Filmes filme: filmes) {
+			if (filme.getCodigo() == j) {
+				System.out.print("Insira o novo codigo do filme: ");
+				filme.setCodigo(scan.nextInt());
+				System.out.print("Insira o novo nome do filme: ");
+				filme.setNome(scan.next());
+				System.out.print("Insira a nova faixa etaria: ");
+				filme.setFaixaEtaria(scan.nextInt());
+				System.out.print("Insira a nova duração em horas: ");
+				filme.setHoras(scan.nextInt());
+				System.out.print("Insira a nova duração em minutos: ");
+				filme.setMinutos(scan.nextInt());
+			}
+		}
+	}
 }

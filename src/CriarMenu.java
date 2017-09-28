@@ -107,6 +107,9 @@ public class CriarMenu {
 			case 2:
 				func.ExcluirFilme(filmes, scan);
 				break;
+			case 3:
+				func.AlterarFilme(filmes, scan);
+				break;
 			case 4:
 				func.ListarFilmes(filmes);
 				break;

@@ -35,9 +35,13 @@ public class Funcs {
 		}
 	}
 
-	public void AlugarFilme(List<Cliente> clientes) {
+	public void AlugarFilme(List<Cliente> clientes,List<Filmes> filme, Scanner scan) {
+		System.out.println("Qual ID do cliente que vai alugar?");
+		int i = scan.nextInt();
 		for (Cliente cli: clientes) {
-
+			if (cli.getId() == i) {
+				
+			}
 		}
 	}
 	
@@ -63,4 +67,5 @@ public class Funcs {
         
         return cliente;
     }
+
 }

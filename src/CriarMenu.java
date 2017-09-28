@@ -13,8 +13,7 @@ public class CriarMenu {
 	/**
 	 * Metodo para criar menu principal chamando o menu de todos os outros metodos
 	 */
-	public void MenuPrincipal(){
-		Scanner scan = new Scanner(System.in);
+	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan){
 		int op;
 		do{
 			System.out.println("\n---------- Loca Filmes ----------");
@@ -27,7 +26,7 @@ public class CriarMenu {
 			op = scan.nextInt();
 			switch (op){
 			case 1:
-				MenuCliente();
+				MenuCliente(cliente, filme, func, scan);
 				break;
 			case 2:
 				MenuFilme();
@@ -44,12 +43,8 @@ public class CriarMenu {
 	/**
 	 * Metodo que cria e controla todas as funções do cliente
 	 */
-	private void MenuCliente(){
+	private void MenuCliente(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan){
 		int op;
-		Scanner scan = new Scanner(System.in);
-		List<Cliente> clientes;
-		clientes = new LinkedList<>();
-		Funcs func = new Funcs();
 		do{
 			System.out.println("\n---------- Loca Filmes | Clientes ----------");
 			System.out.println("1. Cadastrar");
@@ -63,29 +58,27 @@ public class CriarMenu {
 			System.out.println("---------------------------------");
 			switch (op){
 			case 1:
-				Cliente cliente = new Cliente();
-				//cliente.Cadastrar(i);
-				
-				clientes.add(func.Cadastrar(i, cliente, scan));
+				Cliente clien = new Cliente();
+				cliente.add(func.Cadastrar(i, clien, scan));
 				i++;
 				break;
 
 			case 2: //Pecorre a linkedList ate achar o cliente com o ID selecionado, apos achar o mesmo muda a variavel achou para true e deleta o cliente
 				System.out.print("Insira o ID do cliente que deseja excluir: ");
 				j = scan.nextInt();
-				func.Excluir(clientes, j);
+				func.Excluir(cliente, j);
 				break;
 			case 3: //Alterar cadastro
 				System.out.println("Insira o ID do cliente que quer alterar: ");
 				j = scan.nextInt();
-				func.AlterarCadastro(clientes, j, scan);
+				func.AlterarCadastro(cliente, j, scan);
 				break;
 			case 4://Alugar Filme
-
+				func.AlugarFilme(cliente, filme, scan);
 				break;
 			case 5: 
 				//Listar(clientes);
-				func.Listar(clientes);
+				func.Listar(cliente);
 				break;
 
 			default:

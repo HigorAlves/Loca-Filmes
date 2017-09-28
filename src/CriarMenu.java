@@ -78,7 +78,9 @@ public class CriarMenu {
             	   j = scan.nextInt();
             	   AlterarCadastro(clientes, j, scan);
             	   break;
+               case 4://Alugar Filme
             	   
+            	   break;
                case 5: 
                    Listar(clientes);
                    break;
@@ -148,6 +150,10 @@ public class CriarMenu {
 	   }
    }
    
+   /**
+    * Listar todos os clientes de uma lista
+    * @param clientes Tipo List Cliente
+    */
    private void Listar(List<Cliente> clientes) {
 	   for (Cliente cli: clientes) {
 		   System.out.println("| ID: " + cli.getId() + " | Nome: " + cli.getNome());
@@ -173,6 +179,12 @@ public class CriarMenu {
 			   cli.setTelefone(scan.next());
 			   System.out.println("\nDados do Cliente atualizados com sucesso!");
 		   }
+	   }
+   }
+   
+   private void AlugarFilme(List<Cliente> clientes) {
+	   for (Cliente cli: clientes) {
+		   
 	   }
    }
 }

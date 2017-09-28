@@ -38,21 +38,4 @@ public class Cliente extends Pessoas {
         this.filme = filme;
     }
     
-    public void Cadastrar(int id){
-        setId(id);
-        System.out.println("O ID do cliente sera: " + id);
-		Scanner scan = new Scanner(System.in);
-        System.out.print("\nQual nome do Cliente? ");
-        setNome(scan.next());
-        System.out.print("Qual endereço? ");
-        setEndereco(scan.next());
-        System.out.print("Qual idade? ");
-        setIdade(scan.nextInt());
-        System.out.print("Qual o telefone? ");
-        setTelefone(scan.next());
-        System.out.print("Cliente cadastrado com Sucesso!");
-        setComFilme(false);
-        setDevendo(false);
-    }
-    
 }

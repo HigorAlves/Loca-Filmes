@@ -76,7 +76,7 @@ public class CriarMenu {
                case 3: //Alterar cadastro
             	   System.out.println("Insira o ID do cliente que quer alterar: ");
             	   j = scan.nextInt();
-            	   AlterarCadastro(clientes, j);
+            	   AlterarCadastro(clientes, j, scan);
             	   break;
             	   
                case 5: 
@@ -153,11 +153,25 @@ public class CriarMenu {
 		   System.out.println("| ID: " + cli.getId() + " | Nome: " + cli.getNome());
 	   }
    }
-
-   private void AlterarCadastro(List<Cliente> clientes, int j) {
+   
+   /**
+    * Metodo para alterar os dados de um cliente
+    * @param clientes Lista em cadeado do tipo Cliente.
+    * @param j ID do cliente que devera ser alterado.
+    * @param scan Tipo Scanner para pegar as novas entradas.
+    */
+   private void AlterarCadastro(List<Cliente> clientes, int j, Scanner scan) {
 	   for (Cliente cli: clientes) {
 		   if (cli.getId() == j) {
-			   cli.setNome("Andre");
+			   System.out.print("Insira o novo nome: ");
+			   cli.setNome(scan.next());
+			   System.out.print("\nInsira o novo Endreço: ");
+			   cli.setEndereco(scan.next());
+			   System.out.print("\nInsira a nova Idade: ");
+			   cli.setIdade(scan.nextInt());
+			   System.out.print("\nInsira o novo Telefone: ");
+			   cli.setTelefone(scan.next());
+			   System.out.println("\nDados do Cliente atualizados com sucesso!");
 		   }
 	   }
    }

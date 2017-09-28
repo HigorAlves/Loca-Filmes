@@ -90,8 +90,7 @@ public class CriarMenu {
 	private void MenuFilme(List<Cliente> cliente, List<Filmes> filmes, Funcs func, Scanner scan){
 		int op;
 		do{
-			System.out.println("\n---------- Loca Filmes ----------");
-			System.out.println("----------Filmes----------");
+			System.out.println("\n---------- Loca Filmes | Filmes----------");
 			System.out.println("1. Cadastrar");
 			System.out.println("2. Excluir");
 			System.out.println("3. Alterar Cadastro");
@@ -104,6 +103,9 @@ public class CriarMenu {
 			case 1:
 				Filmes filme = new Filmes();
 				filmes.add(func.CadastrarFilme(filme, scan));
+				break;
+			case 2:
+				func.ExcluirFilme(filmes, scan);
 				break;
 			case 4:
 				func.ListarFilmes(filmes);

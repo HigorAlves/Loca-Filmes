@@ -91,4 +91,15 @@ public class Funcs {
 			System.out.println("Nome: " + filme.getNome());
 		}
 	}
+	
+	public void ExcluirFilme(List<Filmes> filmes, Scanner scan) {
+		System.out.print("Insira o Codigo do filme que deseja deletar: ");
+		int j = scan.nextInt();
+		for (Filmes filme: filmes) {
+			if (filme.getCodigo() == j) {
+				filmes.remove(filme);
+				System.out.println("O filme com ID " + j + " foi deletado com sucesso.");
+			}
+		}
+	}
 }

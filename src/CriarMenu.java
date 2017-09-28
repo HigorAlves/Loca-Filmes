@@ -1,3 +1,8 @@
+/**
+ * Classe responsavel por fazer toda a iteração com as funções basicas do programa
+ * @author Higor Alves
+ */
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -5,6 +10,9 @@ import java.util.Scanner;
 public class CriarMenu {
    private int i = 1, j=1;
    
+   /**
+    * Metodo para criar menu principal chamando o menu de todos os outros metodos
+    */
    public void MenuPrincipal(){
        Scanner scan = new Scanner(System.in);
        int op;
@@ -33,13 +41,15 @@ public class CriarMenu {
            }
        }while (op != 0);
    }
-   
+   /**
+    * Metodo que cria e controla todas as funções do cliente
+    */
    private void MenuCliente(){
        int op;
        Scanner scan = new Scanner(System.in);
        List<Cliente> clientes;
        clientes = new LinkedList<>();
-       do{ 
+       do{
            System.out.println("\n---------- Loca Filmes | Clientes ----------");
            System.out.println("1. Cadastrar");
            System.out.println("2. Excluir Cadastro");
@@ -57,22 +67,18 @@ public class CriarMenu {
                    clientes.add(cliente);
                    i++;
                    break;
-               case 2:
+                   
+               case 2: //Pecorre a linkedList ate achar o cliente com o ID selecionado, apos achar o mesmo muda a variavel achou para true e deleta o cliente
                    System.out.print("Insira o ID do cliente que deseja excluir: ");
                    j = scan.nextInt();
-                   for (Cliente e: clientes){
-                       if (e.getId() == j){
-                           System.out.println("\nAchei os dados do cliente que você quer deletar ");
-                           System.out.println("ID: " + e.getId() + " Nome: " + e.getNome() + " Telefone: " + e.getTelefone());
-                           clientes.remove(e);
-                       }
-                   }
+                   Excluir(clientes, j);
                    break;
-                   
-               case 5:
-                   for (Cliente e: clientes){
-                       System.out.println("| ID: " + e.getId() + " | Nome: " + e.getNome());
-                   }
+               case 3: //Alterar cadastro
+            	   
+            	   break;
+            	   
+               case 5: 
+                   Listar(clientes);
                    break;
                    
                default:
@@ -128,5 +134,21 @@ public class CriarMenu {
                    break;
            }
        }while (op != 0);
+   }
+   
+   private void Excluir(List<Cliente> clientes, int j) {
+	   for (Cliente cli: clientes) {
+		   if (cli.getId() == j) {
+			   System.out.println("\n Cliente a ser deletado: ID: " + cli.getId() + " Nome: " + cli.getNome() + " Telefone: " + cli.getTelefone());
+			   clientes.remove(cli);
+			   System.out.println("Cliente deletado com sucesso.");
+		   }
+	   }
+   }
+   
+   private void Listar(List<Cliente> clientes) {
+	   for (Cliente cli: clientes) {
+		   System.out.println("| ID: " + cli.getId() + " | Nome: " + cli.getNome());
+	   }
    }
 }

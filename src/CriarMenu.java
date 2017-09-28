@@ -3,7 +3,6 @@
  * @author Higor Alves
  */
 
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +28,7 @@ public class CriarMenu {
 				MenuCliente(cliente, filme, func, scan);
 				break;
 			case 2:
-				MenuFilme();
+				MenuFilme(cliente, filme, func, scan);
 				break;
 			case 3:
 				MenuFuncionarios();
@@ -88,9 +87,8 @@ public class CriarMenu {
 		}while (op != 0);
 	}
 
-	private void MenuFilme(){
+	private void MenuFilme(List<Cliente> cliente, List<Filmes> filmes, Funcs func, Scanner scan){
 		int op;
-		Scanner scan = new Scanner(System.in);
 		do{
 			System.out.println("\n---------- Loca Filmes ----------");
 			System.out.println("----------Filmes----------");
@@ -104,6 +102,11 @@ public class CriarMenu {
 			System.out.println("------------------------------");
 			switch (op){
 			case 1:
+				Filmes filme = new Filmes();
+				filmes.add(func.CadastrarFilme(filme, scan));
+				break;
+			case 4:
+				func.ListarFilmes(filmes);
 				break;
 			default:
 				System.out.println("Opção Invalida");

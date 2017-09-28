@@ -68,4 +68,27 @@ public class Funcs {
         return cliente;
     }
 
+	public Filmes CadastrarFilme(Filmes filme, Scanner scan) {
+		System.out.print("Insira o Codigo do filme: ");
+		filme.setCodigo(scan.nextInt());
+		
+		System.out.print("Insira o nome do filme: ");
+		filme.setNome(scan.next());
+		
+		System.out.print("Insira a faixa etaria: ");
+		filme.setFaixaEtaria(scan.nextInt());
+		
+		System.out.print("Insira as horas de duração: ");
+		filme.setHoras(scan.nextInt());
+		
+		System.out.print("Insira os minutos de duração: ");
+		filme.setMinutos(scan.nextInt());
+		return filme;
+	}
+	
+	public void ListarFilmes(List<Filmes> filmes) {
+		for (Filmes filme: filmes) {
+			System.out.println("Nome: " + filme.getNome());
+		}
+	}
 }

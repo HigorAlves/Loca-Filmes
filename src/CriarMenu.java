@@ -74,7 +74,9 @@ public class CriarMenu {
                    Excluir(clientes, j);
                    break;
                case 3: //Alterar cadastro
-            	   
+            	   System.out.println("Insira o ID do cliente que quer alterar: ");
+            	   j = scan.nextInt();
+            	   AlterarCadastro(clientes, j);
             	   break;
             	   
                case 5: 
@@ -149,6 +151,14 @@ public class CriarMenu {
    private void Listar(List<Cliente> clientes) {
 	   for (Cliente cli: clientes) {
 		   System.out.println("| ID: " + cli.getId() + " | Nome: " + cli.getNome());
+	   }
+   }
+
+   private void AlterarCadastro(List<Cliente> clientes, int j) {
+	   for (Cliente cli: clientes) {
+		   if (cli.getId() == j) {
+			   cli.setNome("Andre");
+		   }
 	   }
    }
 }

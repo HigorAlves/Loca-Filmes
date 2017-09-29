@@ -1,18 +1,7 @@
-import java.util.Scanner;
-
 public class Cliente extends Pessoas {
     private boolean comFilme;
     private String filme;
     private boolean devendo;
-    private int id;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public boolean isComFilme() {
         return comFilme;

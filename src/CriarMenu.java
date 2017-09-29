@@ -98,7 +98,7 @@ public class CriarMenu {
 			System.out.println("0. Menu Principal");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
-			
+
 			switch (op){
 			case 1:
 				Filmes filme = new Filmes();
@@ -123,12 +123,12 @@ public class CriarMenu {
 		}while (op != 0);
 	}
 
+
 	private void MenuFuncionarios(){
 		int op;
 		Scanner scan = new Scanner(System.in);
 		do{
-			System.out.println("\n---------- Loca Filmes ----------");
-			System.out.println("---------- Administração ----------");
+			System.out.println("\n---------- Loca Filmes | Funcionarios----------");
 			System.out.println("1. Cadastrar");
 			System.out.println("2. Excluir");
 			System.out.println("3. Alterar Cadastro");
@@ -136,9 +136,11 @@ public class CriarMenu {
 			System.out.println("0. Menu Principal");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
-			System.out.println("------------------------------");
 			switch (op){
 			case 1:
+				break;
+			case 0:
+				System.out.println("------------------------------");
 				break;
 			default:
 				System.out.println("Opção Invalida");

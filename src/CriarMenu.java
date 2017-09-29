@@ -28,7 +28,7 @@ public class CriarMenu {
 				MenuCliente(cliente, filme, func, scan);
 				break;
 			case 2:
-				MenuFilme(cliente, filme, func, scan);
+				MenuFilme(filme, func, scan);
 				break;
 			case 3:
 				MenuFuncionarios();
@@ -87,7 +87,7 @@ public class CriarMenu {
 		}while (op != 0);
 	}
 
-	private void MenuFilme(List<Cliente> cliente, List<Filmes> filmes, Funcs func, Scanner scan){
+	private void MenuFilme(List<Filmes> filmes, Funcs func, Scanner scan){
 		int op;
 		do{
 			System.out.println("\n---------- Loca Filmes | Filmes----------");
@@ -98,7 +98,7 @@ public class CriarMenu {
 			System.out.println("0. Menu Principal");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
-			System.out.println("------------------------------");
+			
 			switch (op){
 			case 1:
 				Filmes filme = new Filmes();
@@ -112,6 +112,9 @@ public class CriarMenu {
 				break;
 			case 4:
 				func.ListarFilmes(filmes);
+				break;
+			case 0:
+				System.out.println("------------------------------");
 				break;
 			default:
 				System.out.println("Opção Invalida");

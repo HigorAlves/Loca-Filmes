@@ -144,6 +144,7 @@ public class CriarMenu {
 				func.ExcluirFuncionario(funcionarios, scan);
 				break;
 			case 3:
+				func.AlterarFuncionario(funcionarios, scan);
 				break;
 			case 4:
 				func.ListarFuncionarios(funcionarios);

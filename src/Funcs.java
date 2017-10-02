@@ -124,7 +124,7 @@ public class Funcs {
 	
 	public Funcionarios CadastroFuncionario(int id, Funcionarios funcionario, Scanner scan) {
 		funcionario.setId(id);
-		System.out.print("O ID do funcionario sera: " + funcionario.getId());
+		System.out.println("O ID do funcionario sera: " + funcionario.getId());
 		
 		System.out.print("Qual nome do funcionario? ");
 		funcionario.setNome(scan.next());
@@ -167,4 +167,34 @@ public class Funcs {
 		}
 	}
 
+	public void AlterarFuncionario(List<Funcionarios> funcionarios, Scanner scan) {
+		System.out.print("Insira o ID do funcionario: ");
+		int j = scan.nextInt();
+		
+		for (Funcionarios funcionario: funcionarios) {
+			if (funcionario.getId() == j) {
+				System.out.print("O ID do funcionario: " + funcionario.getId());
+				
+				System.out.print("Novo nome do funcionario? ");
+				funcionario.setNome(scan.next());
+				
+				System.out.print("Novo endereço: ");
+				funcionario.setEndereco(scan.next());
+				
+				System.out.print("Nova a idade: ");
+				funcionario.setIdade(scan.nextInt());
+				
+				System.out.print("Novo Telefone: ");
+				funcionario.setTelefone(scan.next());
+				
+				System.out.print("Novo o cargo: ");
+				funcionario.setCargo(scan.next());
+				
+				System.out.print("Novo salario: ");
+				funcionario.setSalario(scan.nextFloat());
+				
+				System.out.print("Funcionario alterado com sucesso!");
+			}
+		}
+	}
 }

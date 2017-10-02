@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CriarMenu {
-	private int i = 1, j=1;
+	private int i = 1, j=1, aux = 1;
 
 	/**
 	 * Metodo para criar menu principal chamando o menu de todos os outros metodos
 	 */
-	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan){
+	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan, List<Funcionarios> funcionarios){
 		int op;
 		do{
 			System.out.println("\n---------- Loca Filmes ----------");
@@ -31,7 +31,7 @@ public class CriarMenu {
 				MenuFilme(filme, func, scan);
 				break;
 			case 3:
-				MenuFuncionarios();
+				MenuFuncionarios(scan, funcionarios, func);
 				break;
 			default:
 				System.out.println("\nOpção inserida é invalida!");
@@ -123,10 +123,8 @@ public class CriarMenu {
 		}while (op != 0);
 	}
 
-
-	private void MenuFuncionarios(){
+	private void MenuFuncionarios(Scanner scan, List<Funcionarios> funcionarios, Funcs func){
 		int op;
-		Scanner scan = new Scanner(System.in);
 		do{
 			System.out.println("\n---------- Loca Filmes | Funcionarios----------");
 			System.out.println("1. Cadastrar");
@@ -138,6 +136,12 @@ public class CriarMenu {
 			op = scan.nextInt();
 			switch (op){
 			case 1:
+				Funcionarios funcionario = new Funcionarios();
+				funcionarios.add(func.CadastroFuncionario(aux, funcionario, scan));
+				aux++;
+				break;
+			case 4:
+				func.ListarFuncionarios(funcionarios);
 				break;
 			case 0:
 				System.out.println("------------------------------");

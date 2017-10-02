@@ -121,4 +121,37 @@ public class Funcs {
 			}
 		}
 	}
+	
+	public Funcionarios CadastroFuncionario(int id, Funcionarios funcionario, Scanner scan) {
+		funcionario.setId(id);
+		System.out.print("O ID do funcionario sera: " + funcionario.getId());
+		
+		System.out.print("\nQual nome do funcionario? ");
+		funcionario.setNome(scan.next());
+		
+		System.out.print("\nQual endereço: ");
+		funcionario.setEndereco(scan.next());
+		
+		System.out.print("\nQual a idade: ");
+		funcionario.setIdade(scan.nextInt());
+		
+		System.out.print("\nQual Telefone: ");
+		funcionario.setTelefone(scan.next());
+		
+		System.out.print("\nQual o cargo: ");
+		funcionario.setCargo(scan.next());
+		
+		System.out.print("\nQual salario: ");
+		funcionario.setSalario(scan.nextFloat());
+		
+		System.out.print("\nFuncionario cadastrado com sucesso!");
+		
+		return funcionario;
+	}
+	
+	public void ListarFuncionarios(List<Funcionarios> funcionarios) {
+		for (Funcionarios funcionario: funcionarios) {
+			System.out.println("ID do Funcionario: " + funcionario.getId() + " Nome: " + funcionario.getNome());
+		}
+	}
 }

@@ -140,6 +140,11 @@ public class CriarMenu {
 				funcionarios.add(func.CadastroFuncionario(aux, funcionario, scan));
 				aux++;
 				break;
+			case 2:
+				func.ExcluirFuncionario(funcionarios, scan);
+				break;
+			case 3:
+				break;
 			case 4:
 				func.ListarFuncionarios(funcionarios);
 				break;

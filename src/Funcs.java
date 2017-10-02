@@ -126,25 +126,25 @@ public class Funcs {
 		funcionario.setId(id);
 		System.out.print("O ID do funcionario sera: " + funcionario.getId());
 		
-		System.out.print("\nQual nome do funcionario? ");
+		System.out.print("Qual nome do funcionario? ");
 		funcionario.setNome(scan.next());
 		
-		System.out.print("\nQual endereço: ");
+		System.out.print("Qual endereço: ");
 		funcionario.setEndereco(scan.next());
 		
-		System.out.print("\nQual a idade: ");
+		System.out.print("Qual a idade: ");
 		funcionario.setIdade(scan.nextInt());
 		
-		System.out.print("\nQual Telefone: ");
+		System.out.print("Qual Telefone: ");
 		funcionario.setTelefone(scan.next());
 		
-		System.out.print("\nQual o cargo: ");
+		System.out.print("Qual o cargo: ");
 		funcionario.setCargo(scan.next());
 		
-		System.out.print("\nQual salario: ");
+		System.out.print("Qual salario: ");
 		funcionario.setSalario(scan.nextFloat());
 		
-		System.out.print("\nFuncionario cadastrado com sucesso!");
+		System.out.print("Funcionario cadastrado com sucesso!");
 		
 		return funcionario;
 	}
@@ -154,4 +154,17 @@ public class Funcs {
 			System.out.println("ID do Funcionario: " + funcionario.getId() + " Nome: " + funcionario.getNome());
 		}
 	}
+	
+	public void ExcluirFuncionario(List<Funcionarios> funcionarios, Scanner scan) {
+		System.out.print("Insira o ID do funcionario que deseja deletar: ");
+		int j = scan.nextInt();
+		
+		for (Funcionarios funcionario: funcionarios) {
+			if (funcionario.getId() == j) {
+				funcionarios.remove(funcionario);
+				System.out.println("O funcionario com ID " + j + " foi deletador com sucesso!");
+			}
+		}
+	}
+
 }

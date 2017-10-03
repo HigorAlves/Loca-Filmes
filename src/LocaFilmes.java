@@ -10,7 +10,7 @@ public class LocaFilmes {
 		List<Funcionarios> funcionarios = new LinkedList<>();
 		Funcs func = new Funcs();
 		Scanner scan = new Scanner(System.in);
-		CriarMenu menu = new CriarMenu();
+		CriarMenu menu = new CriarMenu(1,1);
 		menu.MenuPrincipal(clientes, filme, func, scan, funcionarios);
 	}
 

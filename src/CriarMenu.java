@@ -1,5 +1,6 @@
 /**
- * Classe responsavel por fazer toda a iteração com as funções basicas do programa
+ * Esta classe faz toda a interação do programa com as funções da classe Funcs.
+ * Tornando todo o funcionamento do mesmo claro e limpo.
  * @author Higor Alves
  */
 
@@ -7,11 +8,31 @@ import java.util.List;
 import java.util.Scanner;
 
 public class CriarMenu {
-	private int i = 1, j=1, aux = 1;
+	private int id;
+	private int idf;
+	
+	public CriarMenu(int id, int idf) {
+		setId(id);
+		setIdf(idf);
+	}
+	
+	public int getId() {
+		return id;
+	}
 
-	/**
-	 * Metodo para criar menu principal chamando o menu de todos os outros metodos
-	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getIdf() {
+		return idf;
+	}
+
+	public void setIdf(int idf) {
+		this.idf = idf;
+	}
+
+	//MENUS
 	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan, List<Funcionarios> funcionarios){
 		int op;
 		do{
@@ -33,15 +54,16 @@ public class CriarMenu {
 			case 3:
 				MenuFuncionarios(scan, funcionarios, func);
 				break;
+			case 0:
+				System.out.println("Terminando o programa.");
+				break;
 			default:
 				System.out.println("\nOpção inserida é invalida!");
 				break;
 			}
 		}while (op != 0);
 	}
-	/**
-	 * Metodo que cria e controla todas as funções do cliente
-	 */
+	
 	private void MenuCliente(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan){
 		int op;
 		do{
@@ -50,7 +72,9 @@ public class CriarMenu {
 			System.out.println("2. Excluir Cadastro");
 			System.out.println("3. Alterar Cadastro");
 			System.out.println("4. Alugar Filmes");
-			System.out.println("5. Exibir Cadastros");
+			System.out.println("5. Devolver Filme");
+			System.out.println(" . Verificar Divida");
+			System.out.println("6. Exibir Cadastros");
 			System.out.println("0. Voltar ao menu principal");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
@@ -58,28 +82,28 @@ public class CriarMenu {
 			switch (op){
 			case 1:
 				Cliente clien = new Cliente();
-				cliente.add(func.Cadastrar(i, clien, scan));
-				i++;
+				cliente.add(func.Cadastrar(id, clien, scan));
+				id++;
 				break;
 
-			case 2: //Pecorre a linkedList ate achar o cliente com o ID selecionado, apos achar o mesmo muda a variavel achou para true e deleta o cliente
-				System.out.print("Insira o ID do cliente que deseja excluir: ");
-				j = scan.nextInt();
-				func.Excluir(cliente, j);
+			case 2:
+				func.Excluir(cliente, scan);
 				break;
-			case 3: //Alterar cadastro
-				System.out.println("Insira o ID do cliente que quer alterar: ");
-				j = scan.nextInt();
-				func.AlterarCadastro(cliente, j, scan);
+			case 3:
+				func.AlterarCadastro(cliente, scan);
 				break;
-			case 4://Alugar Filme
+			case 4:
 				func.AlugarFilme(cliente, filme, scan);
 				break;
-			case 5: 
-				//Listar(clientes);
+			case 5:
+				func.DevolverFilme(cliente, filme, scan);
+				break;
+			case 6: 
 				func.Listar(cliente);
 				break;
-
+			case 0:
+				System.out.println("Voltando ao menu principal.");
+				break;
 			default:
 				System.out.println("\n Opção Invalida.");
 				break;
@@ -137,8 +161,8 @@ public class CriarMenu {
 			switch (op){
 			case 1:
 				Funcionarios funcionario = new Funcionarios();
-				funcionarios.add(func.CadastroFuncionario(aux, funcionario, scan));
-				aux++;
+				funcionarios.add(func.CadastroFuncionario(idf, funcionario, scan));
+				idf++;
 				break;
 			case 2:
 				func.ExcluirFuncionario(funcionarios, scan);

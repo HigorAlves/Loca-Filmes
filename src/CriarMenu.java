@@ -73,7 +73,6 @@ public class CriarMenu {
 			System.out.println("3. Alterar Cadastro");
 			System.out.println("4. Alugar Filmes");
 			System.out.println("5. Devolver Filme");
-			System.out.println(" . Verificar Divida");
 			System.out.println("6. Exibir Cadastros");
 			System.out.println("0. Voltar ao menu principal");
 			System.out.print("Opção: ");

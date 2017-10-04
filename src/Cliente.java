@@ -7,13 +7,11 @@
 public class Cliente extends Pessoas {
     private boolean comFilme;
     private String filme;
-    private boolean devendo;
     
     /**
      * Construtor padrão, para que toda vez que um novo cliente for cadastrado ele entre sem dividas e nenhum filme.
      */
     public Cliente() {
-    		setDevendo(false);
     		setComFilme(false);
     }
     
@@ -23,14 +21,6 @@ public class Cliente extends Pessoas {
 
     public void setComFilme(boolean comFilme) {
         this.comFilme = comFilme;
-    }
-
-    public boolean isDevendo() {
-        return devendo;
-    }
-
-    public void setDevendo(boolean devendo) {
-        this.devendo = devendo;
     }
 
     public String getFilme() {

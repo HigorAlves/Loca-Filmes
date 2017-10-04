@@ -72,8 +72,8 @@ public class Funcs {
 				int i = scan.nextInt();
 				for (Cliente cli: clientes) {
 					if (cli.getId() == i) {
-						if (cli.isComFilme() == true || cli.isDevendo() == true) {
-							System.out.println("O cliente não pode alugar um filme. Ja esta com um filme? " + cli.isComFilme() + " Esta devendo? " + cli.isDevendo());
+						if (cli.isComFilme() == true) {
+							System.out.println("O cliente não pode alugar um filme. Ja esta com um filme? " + cli.isComFilme());
 						} else {
 							System.out.print("Qual o codigo do filme que sera alugado: ");
 							int j = scan.nextInt();

@@ -1,30 +1,84 @@
 # Loca-Filmes
-Loca Filmes, é um programa criado em java que visa o aprendizado na linguagem de programação java e tecnicas de programação orientada a objeto.
+Loca Filmes, é um programa criado em java que visa o aprendizado na linguagem e tecnicas de programação orientada a objeto.
 
 Conforme a evolução das habilidades em java e POO o codigo sera atualizado ate que chegue em seu ultimo estagio o qual sera possivel usar uma interface grafica para manusea-lo.
 
-Neste programa sera possivel via linha de comandos realizar os seguintes comandos:
+Neste programa sera possivel via linha de comandos e interface realizar os seguintes comandos:
 
 - Funções Clientes:
-    - [ ] Cadastar.
-    - [ ] Listar.
-    - [ ] Alterar.
+    - [x] Cadastar.
+    - [x] Excluir Cadastro.
+    - [x] Alterar Cadastro.
+    - [x] Alugar Filmes.
+    - [x] Devolver Filme.
+    - [x] Exibir Cadastros.
 
 - Funções Funcionarios:
-    - [ ] Cadastrar.
-    - [ ] Listar.
-    - [ ] Alterar.
+    - [x] Cadastrar.
+    - [x] Excluir Cadastro.
+    - [x] Alterar Cadastro.
+    - [x] Exibir Funcionarios.
 
 - Funções Filmes:
-    - [ ] Cadastrar.
-    - [ ] Listar.
-    - [ ] Alterar.
+    - [x] Cadastrar.
+    - [x] Excluir Cadastro.
+    - [x] Alterar Cadastro.
+    - [x] Exibir Filmes.
 
-# GUI que sera implementado
+## Em Progresso
+### GUI que sera implementado
+- GUI Implementada:
+    - [x] Frame Principal
+    - [ ] Menu Clientes
+        - [ ] Cadastro
+            - [x] GUI
+            - [ ] Funcionalidade
+        - [ ] Excluir Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Alterar Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Alugar Filme
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Devolver Filme
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Exibir Cadastros
+            - [ ] GUI
+            - [ ] Funcionalidade
+    - [ ] Menu Funcionarios
+        - [ ] Cadastrar
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Excluir Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Alterar Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Exibir Funcionarios
+            - [ ] GUI
+            - [ ] Funcionalidade
+    - [ ] Menu Filmes
+        - [ ] Cadastrar
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Excluir Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Alterar Cadastro
+            - [ ] GUI
+            - [ ] Funcionalidade
+        - [ ] Exibir Filmes
+            - [ ] GUI
+            - [ ] Funcionalidade
+
 ![Principal](/imgs/Loca-Filmes.png)
-![Principal](/imgs/Menu-Funcionarios.png)
-![Principal](/imgs/Menu-Clientes.png)
-![Principal](/imgs/Menu-Filmes.png)
-![Principal](/imgs/Cadastro.png)
+![Funcionarios](/imgs/Menu-Funcionarios.png)
+![Clientes](/imgs/Menu-Clientes.png)
+![Filmes](/imgs/Menu-Filmes.png)
+![Cadastro](/imgs/Cadastro.png)
 
 **Codigo Criado por todos os colaboradores cadastrados no projeto.**

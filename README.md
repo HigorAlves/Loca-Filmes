@@ -20,4 +20,11 @@ Neste programa sera possivel via linha de comandos realizar os seguintes comando
     - [ ] Listar.
     - [ ] Alterar.
 
+# GUI que sera implementado
+![Principal](/imgs/Loca-Filmes.png)
+![Principal](/imgs/Menu-Funcionarios.png)
+![Principal](/imgs/Menu-Clientes.png)
+![Principal](/imgs/Menu-Filmes.png)
+![Principal](/imgs/Cadastro.png)
+
 **Codigo Criado por todos os colaboradores cadastrados no projeto.**

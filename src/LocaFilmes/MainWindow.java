@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -19,8 +20,14 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener{
 	private JMenu funcionario, clientes, filmes;
 	private JMenuItem fCadastrar, fAlterar, fListar, fExcluir, cCadastrar, cAlterar, cListar, cExcluir,
 						fiCadastrar,fiAlterar, fiListar, fiExcluir;
-	private JLabel lbl;
-	private static int id;
+	private JLabel lblFqt, lblCqt, lblFiqt;
+	private static int id = 0, cId = 0, fId = 0;
+	
+	public MainWindow() {
+		lblFqt = new JLabel("Quantidade de Funcionarios Cadastrados: " + (id));
+		lblCqt = new JLabel("Quantidade de Clientes Cadastrados: " + cId);
+		lblFiqt = new JLabel("Quantidade de Filmes Cadastrados: " + fId);
+	}
 	
 	public void Show() {
 		MainWindow frame = new MainWindow();
@@ -28,7 +35,7 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener{
 		frame.setSize(200, 125);
 		frame.setTitle("LocaFilmes");
 		
-		JPanel panel = new JPanel();
+		JPanel panel = new JPanel(new GridLayout(0, 1));
 		frame.add(panel);
 		
 		//Menu Funcionario
@@ -68,8 +75,9 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener{
 		filmes.add(fiExcluir);
 		menuBar.add(filmes);
 		
-		lbl = new JLabel("Quantidade de Funcionarios Cadastrados: " + (id));
-		panel.add(lbl);
+		panel.add(lblFqt);
+		panel.add(lblCqt);
+		panel.add(lblFiqt);
 		
 		fCadastrar.addActionListener(this);
 		fAlterar.addActionListener(this);
@@ -83,7 +91,10 @@ public class MainWindow extends JFrame implements MenuListener, ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource().equals(fCadastrar)) {
 			id = fw.Cadastro(id);
-			lbl.setText("Quantidade de Funcionarios Cadastrados: " + id);
+			lblFqt.setText("Quantidade de Funcionarios Cadastrados: " + id);
+		}
+		if(e.getSource().equals(fAlterar)) {
+			fw.Alterar(id);
 		}
 	}
 

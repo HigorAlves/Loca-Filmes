@@ -27,53 +27,52 @@ Neste programa sera possivel via linha de comandos e interface realizar os segui
 
 ## Em Progresso
 ### GUI que sera implementado
-- GUI Implementada:
-    - [x] Frame Principal
-    - [ ] Menu Clientes
-        - [ ] Cadastro
-            - [x] GUI
-            - [ ] Funcionalidade
-        - [ ] Excluir Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Alterar Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Alugar Filme
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Devolver Filme
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Exibir Cadastros
-            - [ ] GUI
-            - [ ] Funcionalidade
-    - [ ] Menu Funcionarios
-        - [ ] Cadastrar
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Excluir Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Alterar Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Exibir Funcionarios
-            - [ ] GUI
-            - [ ] Funcionalidade
-    - [ ] Menu Filmes
-        - [ ] Cadastrar
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Excluir Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Alterar Cadastro
-            - [ ] GUI
-            - [ ] Funcionalidade
-        - [ ] Exibir Filmes
-            - [ ] GUI
-            - [ ] Funcionalidade
+- [x] Frame Principal
+- [ ] Menu Clientes
+    - [ ] Cadastro
+        - [x] GUI
+        - [ ] Funcionalidade
+    - [ ] Excluir Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Alterar Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Alugar Filme
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Devolver Filme
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Exibir Cadastros
+        - [ ] GUI
+        - [ ] Funcionalidade
+- [ ] Menu Funcionarios
+    - [ ] Cadastrar
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Excluir Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Alterar Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Exibir Funcionarios
+        - [ ] GUI
+        - [ ] Funcionalidade
+- [ ] Menu Filmes
+    - [ ] Cadastrar
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Excluir Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Alterar Cadastro
+        - [ ] GUI
+        - [ ] Funcionalidade
+    - [ ] Exibir Filmes
+        - [ ] GUI
+        - [ ] Funcionalidade
 
 ![Principal](/imgs/Loca-Filmes.png)
 ![Funcionarios](/imgs/Menu-Funcionarios.png)

@@ -54,6 +54,10 @@ public class CriarMenu {
 			case 3:
 				MenuFuncionarios(scan, funcionarios, func);
 				break;
+			case 4:
+				Arquivo arq = new Arquivo();
+				arq.load(cliente);
+				break;
 			case 0:
 				System.out.println("Terminando o programa.");
 				break;

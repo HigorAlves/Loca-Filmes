@@ -43,4 +43,8 @@ public class FuncionarioWindow {
 			}
 		}
 	}
+	
+	public void Listar() {
+		
+	}
 }

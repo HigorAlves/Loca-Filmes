@@ -77,7 +77,7 @@ Neste programa sera possivel via linha de comandos e interface realizar os segui
 ![Principal](/imgs/Loca-Filmes.png)
 ![Funcionarios](/imgs/Menu-Funcionarios.png)
 ![Clientes](/imgs/Menu-Clientes.png)
-![Filmes](/imgs/Menu-Filmes.png)
+![Filmes](/imgs/Menu-FIlmes.png)
 ![Cadastro](/imgs/Cadastro.png)
 
 **Codigo Criado por todos os colaboradores cadastrados no projeto.**

@@ -6,44 +6,55 @@ import java.util.List;
 import java.util.Scanner;;
 
 public class Arquivo {
-	private String fileHeader = ("Nome, Sobrenome, Idade, Cargo");
+	private String fHeader = ("ID,Nome,Endereço,Idade,Telefone");
+	String fileName = "data.csv";
+	File file = new File(fileName);
 	
-	//Salvar arquivo em CSV
-	public void save(){
-		String fileName = "data.csv";
-		File file = new File(fileName);
-		
-		Scanner input;
+	//Carregar arquivos para classe clientes.
+	public void load(List<Cliente> clientes){
 		try {
-			input = new Scanner(file);
+			Scanner input = new Scanner(file);
 			while(input.hasNext()) {
+				Cliente cliente = new Cliente();
 				String data = input.next(); //Pega linha toda
-				String[] values = data.split(",");
-				System.out.println(values[0]);
+				String[] values = data.split(","); //Parte as partes da linha e joga no vetor de string
+				
+				
 			}
 			input.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
+
 	}
-	
-	//Retornar dados do arquivo em CSV
-	public void load(List<Cliente> clientes) {
+
+	//Salvar dados dos clientes no arquivo.
+	public void save(List<Cliente> clientes) {		
 		try {
-			FileWriter filewriter = new FileWriter("data.csv");
-			for (Cliente cli: clientes) {
-				filewriter.append("\n");
-				filewriter.append(cli.getNome());
-				filewriter.append(",");
-				filewriter.append(cli.getEndereco());
-				filewriter.flush();
-				filewriter.close();
+			if(!file.exists()) {
+				file.createNewFile();
 			}
+			
+			FileWriter fw = new FileWriter(file.getAbsolutePath(), true);
+			
+			fw.append(fHeader);
+			for (Cliente cli: clientes) {
+				fw.append("\n");
+				fw.append(""+cli.getId());
+				fw.append(",");
+				fw.append(cli.getNome());
+				fw.append(",");
+				fw.append(cli.getEndereco());
+				fw.append(",");
+		        fw.append(""+cli.getIdade());
+		        fw.append(",");
+		        fw.append(cli.getTelefone());
+			}
+			fw.flush();
+			fw.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Todos os Clientes foram salvos no arquivo.");
 	}
 }

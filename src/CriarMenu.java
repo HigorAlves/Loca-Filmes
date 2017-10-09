@@ -56,7 +56,7 @@ public class CriarMenu {
 				break;
 			case 4:
 				Arquivo arq = new Arquivo();
-				arq.save(cliente);
+				arq.load(cliente);
 				break;
 			case 0:
 				System.out.println("Terminando o programa.");

@@ -12,7 +12,7 @@ public class Funcs {
 	public void Listar(List<Cliente> clientes) {
 		if (clientes.isEmpty() == false) {
 			for (Cliente cli: clientes) {
-				System.out.print("| ID: " + cli.getId() + " | Nome: " + cli.getNome() + " | Idade: " + cli.getIdade() + " | Endereço: " + cli.getEndereco() + " | Telefone: " + cli.getTelefone());
+				System.out.print("| ID: " + cli.getId() + " | Nome: " + cli.getNome() + " | Idade: " + cli.getIdade() + " | Endereço: " + cli.getEndereco() + " | Telefone: " + cli.getTelefone() + "\n");
 				if (cli.isComFilme() == true) {
 					System.out.println(" Filme: " + cli.getFilme());
 				}

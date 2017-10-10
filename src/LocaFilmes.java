@@ -8,10 +8,13 @@ public class LocaFilmes {
 		List<Cliente> clientes = new LinkedList<>();
 		List<Filmes> filme = new LinkedList<>();
 		List<Funcionarios> funcionarios = new LinkedList<>();
+		
+		Arquivo arq = new Arquivo();
 		Funcs func = new Funcs();
 		Scanner scan = new Scanner(System.in);
 		CriarMenu menu = new CriarMenu(1,1);
-		menu.MenuPrincipal(clientes, filme, func, scan, funcionarios);
+		
+		menu.MenuPrincipal(clientes, filme, func, scan, funcionarios, arq);
 	}
 
 }

@@ -6,14 +6,19 @@ import java.util.List;
 import java.util.Scanner;;
 
 public class Arquivo {
-	private String fHeader = ("ID,Nome,Endereço,Idade,Telefone");
-	String fileName = "data.csv";
-	File file = new File(fileName);
+	private String fCHeader = ("ID,Nome,Endereço,Idade,Telefone");
+	private String fiHeader = ("Codigo,Nome,Faixa Etaria,Horas Duração,Minutos Duração");
+	
+	private String cFileName = "clientes.csv";
+	private String fiFileName = "filmes.csv";
+	
+	File cFile = new File(cFileName);
+	File fiFile = new File(fiFileName);
 	
 	//Carregar arquivos para classe clientes.
-	public void load(List<Cliente> clientes){
+	public void cLoad(List<Cliente> clientes){
 		try {
-			Scanner input = new Scanner(file);
+			Scanner input = new Scanner(cFile);
 			input.nextLine();
 			while(input.hasNext()) {
 				Cliente cliente = new Cliente();
@@ -36,15 +41,15 @@ public class Arquivo {
 	}
 
 	//Salvar dados dos clientes no arquivo.
-	public void save(List<Cliente> clientes) {		
+	public void cSave(List<Cliente> clientes) {		
 		try {
-			if(!file.exists()) {
-				file.createNewFile();
+			if(!cFile.exists()) {
+				cFile.createNewFile();
 			}
 			
-			FileWriter fw = new FileWriter(file.getAbsolutePath(), true);
+			FileWriter fw = new FileWriter(cFile.getAbsolutePath(), true);
 			
-			fw.append(fHeader);
+			fw.append(fCHeader);
 			for (Cliente cli: clientes) {
 				fw.append("\n");
 				fw.append(""+cli.getId());
@@ -64,5 +69,60 @@ public class Arquivo {
 			e.printStackTrace();
 		}
 		System.out.println("Todos os Clientes foram salvos no arquivo.");
+	}
+	
+	public void fiLoad(List<Filmes> filmes) {
+		try {
+			Scanner input = new Scanner(fiFile);
+			input.nextLine();
+			
+			while(input.hasNext()) {
+				Filmes filme = new Filmes();
+				String data = input.next();
+				String[] values = data.split(",");
+				
+				filme.setCodigo(Integer.parseInt(values[0]));
+				filme.setNome(values[1]);
+				filme.setFaixaEtaria(Integer.parseInt(values[2]));
+				filme.setHoras(Integer.parseInt(values[3]));
+				filme.setMinutos(Integer.parseInt(values[4]));
+				
+				filmes.add(filme);
+			}
+			
+			input.close();
+			System.out.println("Filmes carregados com sucesso.");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void fiSave(List<Filmes> filme) {
+		try {
+			if(!fiFile.exists()) {
+				fiFile.createNewFile();
+			}
+			
+			FileWriter fw = new FileWriter(fiFile.getAbsolutePath(), true);
+			fw.append(fiHeader);
+			
+			for (Filmes fi: filme) {
+				fw.append("\n");
+				fw.append("" + fi.getCodigo());
+				fw.append(",");
+				fw.append(fi.getNome());
+				fw.append(",");
+				fw.append("" + fi.getFaixaEtaria());
+				fw.append(",");
+				fw.append("" + fi.getHoras());
+				fw.append(",");
+				fw.append("" + fi.getMinutos());
+			}
+			fw.flush();
+			fw.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Todos os Filmes foram salvos com sucesso.");
 	}
 }

@@ -179,7 +179,7 @@ public class Funcs {
 	public void ListarFilmes(List<Filmes> filmes) {
 		if (filmes.isEmpty() == false) {
 			for (Filmes filme: filmes) {
-				System.out.println("Nome: " + filme.getNome());
+				System.out.println("| Codigo: " + filme.getCodigo() + " | Nome: " + filme.getNome() + " | Faixa Etaria: " + filme.getFaixaEtaria() + " | Duração: " + filme.getHoras() + "h(rs) " + filme.getMinutos() + "min(s)\n");
 			}	
 		} else {
 			System.out.println("Não ha nenhum filme cadastrado.");

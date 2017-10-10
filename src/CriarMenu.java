@@ -33,7 +33,7 @@ public class CriarMenu {
 	}
 
 	//MENUS
-	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan, List<Funcionarios> funcionarios){
+	public void MenuPrincipal(List<Cliente> cliente, List<Filmes> filme, Funcs func, Scanner scan, List<Funcionarios> funcionarios, Arquivo arq){
 		int op;
 		do{
 			System.out.println("\n---------- Loca Filmes ----------");
@@ -41,6 +41,10 @@ public class CriarMenu {
 			System.out.println("1. Cliente");
 			System.out.println("2. Filmes");
 			System.out.println("3. Funcionarios");
+			System.out.println("4. Salvar Clientes");
+			System.out.println("5. Carregar Clientes");
+			System.out.println("6. Salvar Filmes");
+			System.out.println("7. Carregar Filmes");
 			System.out.println("0. Sair do Programa");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
@@ -55,8 +59,16 @@ public class CriarMenu {
 				MenuFuncionarios(scan, funcionarios, func);
 				break;
 			case 4:
-				Arquivo arq = new Arquivo();
-				arq.load(cliente);
+				arq.cSave(cliente);
+				break;
+			case 5:
+				arq.cLoad(cliente);
+				break;
+			case 6:
+				arq.fiSave(filme);
+				break;
+			case 7:
+				arq.fiLoad(filme);
 				break;
 			case 0:
 				System.out.println("Terminando o programa.");

@@ -45,6 +45,8 @@ public class CriarMenu {
 			System.out.println("5. Carregar Clientes");
 			System.out.println("6. Salvar Filmes");
 			System.out.println("7. Carregar Filmes");
+			System.out.println("8. Salvar Funcionarios");
+			System.out.println("9. Carregar Funcionarios");
 			System.out.println("0. Sair do Programa");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
@@ -69,6 +71,12 @@ public class CriarMenu {
 				break;
 			case 7:
 				arq.fiLoad(filme);
+				break;
+			case 8:
+				arq.fuSave(funcionarios);
+				break;
+			case 9:
+				arq.fuLoad(funcionarios);
 				break;
 			case 0:
 				System.out.println("Terminando o programa.");

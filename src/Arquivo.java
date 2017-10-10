@@ -8,12 +8,15 @@ import java.util.Scanner;;
 public class Arquivo {
 	private String fCHeader = ("ID,Nome,Endereço,Idade,Telefone");
 	private String fiHeader = ("Codigo,Nome,Faixa Etaria,Horas Duração,Minutos Duração");
+	private String fuHeader = ("ID,Nome,Endereço,Idade,Telefone,Cargo,Salario");
 	
 	private String cFileName = "clientes.csv";
 	private String fiFileName = "filmes.csv";
+	private String fuFileName = "funcionarios.csv";
 	
 	File cFile = new File(cFileName);
 	File fiFile = new File(fiFileName);
+	File fuFile = new File(fuFileName);
 	
 	//Carregar arquivos para classe clientes.
 	public void cLoad(List<Cliente> clientes){
@@ -124,5 +127,59 @@ public class Arquivo {
 			e.printStackTrace();
 		}
 		System.out.println("Todos os Filmes foram salvos com sucesso.");
+	}
+	
+	public void fuLoad(List<Funcionarios> funcionarios) {
+		Scanner input = new Scanner(fuFileName);
+		input.nextLine();
+		
+		while(input.hasNext()) {
+			Funcionarios funcionario = new Funcionarios();
+			String data = input.next();
+			String[] values = data.split(",");
+			
+			funcionario.setId(Integer.parseInt(values[0]));
+			funcionario.setNome(values[1]);
+			funcionario.setEndereco(values[2]);
+			funcionario.setIdade(Integer.parseInt(values[3]));
+			funcionario.setTelefone(values[4]);
+			funcionario.setCargo(values[5]);
+			funcionario.setSalario(Float.parseFloat(values[6]));
+			funcionarios.add(funcionario);
+		}
+		input.close();
+		System.out.println("Filmes carregados com sucesso.");
+	}
+	
+	public void fuSave(List<Funcionarios> funcionarios) {
+		try {
+			if(!fuFile.exists()) {
+				
+			}
+			
+			FileWriter fw = new FileWriter(fuFile.getAbsolutePath(), true);
+			fw.append(fuHeader);
+			//"ID,Nome,Endereço,Idade,Telefone,Cargo,Salario");
+			for (Funcionarios funcionario: funcionarios) {
+				fw.append("\n");
+				fw.append("" + funcionario.getId());
+				fw.append(",");
+				fw.append(funcionario.getNome());
+				fw.append(",");
+				fw.append(funcionario.getEndereco());
+				fw.append(",");
+				fw.append("" + funcionario.getIdade());
+				fw.append(",");
+				fw.append(funcionario.getTelefone());
+				fw.append(",");
+				fw.append(funcionario.getCargo());
+				fw.append(",");
+				fw.append("" + funcionario.getSalario());
+			}
+			fw.flush();
+			fw.close();
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

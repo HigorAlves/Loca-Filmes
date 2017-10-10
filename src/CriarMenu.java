@@ -41,12 +41,7 @@ public class CriarMenu {
 			System.out.println("1. Cliente");
 			System.out.println("2. Filmes");
 			System.out.println("3. Funcionarios");
-			System.out.println("4. Salvar Clientes");
-			System.out.println("5. Carregar Clientes");
-			System.out.println("6. Salvar Filmes");
-			System.out.println("7. Carregar Filmes");
-			System.out.println("8. Salvar Funcionarios");
-			System.out.println("9. Carregar Funcionarios");
+			System.out.println("4. Arquivo");
 			System.out.println("0. Sair do Programa");
 			System.out.print("Opção: ");
 			op = scan.nextInt();
@@ -61,22 +56,7 @@ public class CriarMenu {
 				MenuFuncionarios(scan, funcionarios, func);
 				break;
 			case 4:
-				arq.cSave(cliente);
-				break;
-			case 5:
-				arq.cLoad(cliente);
-				break;
-			case 6:
-				arq.fiSave(filme);
-				break;
-			case 7:
-				arq.fiLoad(filme);
-				break;
-			case 8:
-				arq.fuSave(funcionarios);
-				break;
-			case 9:
-				arq.fuLoad(funcionarios);
+				MenuArquivo(cliente, filme, funcionarios, arq, scan);
 				break;
 			case 0:
 				System.out.println("Terminando o programa.");
@@ -204,5 +184,49 @@ public class CriarMenu {
 				break;
 			}
 		}while (op != 0);
+	}
+	
+	private void MenuArquivo(List<Cliente> clientes, List<Filmes> filmes, List<Funcionarios> funcionarios, Arquivo arq, Scanner scan) {
+		int op;
+		do{
+			System.out.println("\n---------- Loca Filmes | Arquivo----------");
+			System.out.println("1. Salvar Clientes");
+			System.out.println("2. Carregar Clientes");
+			System.out.println("3. Salvar Filmes");
+			System.out.println("4. Carregar Filmes");
+			System.out.println("5. Salvar Funcionarios");
+			System.out.println("6. Carregar Funcionarios");
+			System.out.println("0. Voltar ao iniciar");
+			System.out.println("Opção: ");
+			op = scan.nextInt();
+			
+			switch(op) {
+			case 1:
+				arq.cSave(clientes);
+				break;
+			case 2:
+				arq.cLoad(clientes);
+				break;
+			case 3:
+				arq.fiSave(filmes);
+				break;
+			case 4:
+				arq.fiLoad(filmes);
+				break;
+			case 5:
+				arq.fuSave(funcionarios);
+				break;
+			case 6:
+				arq.fuLoad(funcionarios);
+				break;
+			case 0:
+				System.out.println("Voltando ao menu iniciar.");
+				break;
+			default:
+				System.out.println("\nOpção inserida é invalida!");
+				break;
+			}
+		}while (op != 0);
+		
 	}
 }

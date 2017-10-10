@@ -13,6 +13,7 @@ public class Cliente extends Pessoas {
      */
     public Cliente() {
     		setComFilme(false);
+    		setFilme(null);
     }
     
     public boolean isComFilme() {

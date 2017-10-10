@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Scanner;;
 
 public class Arquivo {
-	private String fCHeader = ("ID,Nome,Endereço,Idade,Telefone");
-	private String fiHeader = ("Codigo,Nome,Faixa Etaria,Horas Duração,Minutos Duração");
+	private String fCHeader = ("ID,Nome,Endereço,Idade,Telefone,Com filme,Filme");
+	private String fiHeader = ("Codigo,Nome,Faixa Etaria,Horas Duração,Minutos Duração,Algudado");
 	private String fuHeader = ("ID,Nome,Endereço,Idade,Telefone,Cargo,Salario");
 	
 	private String cFileName = "clientes.csv";
@@ -33,13 +33,19 @@ public class Arquivo {
 				cliente.setEndereco(values[2]);
 				cliente.setIdade(Integer.parseInt(values[3]));
 				cliente.setTelefone(values[4]);
-				
+				if(values[5].equals("true")) {
+					cliente.setComFilme(true);
+					cliente.setFilme(values[6]);
+				}else {
+					cliente.setComFilme(false);
+					cliente.setFilme(null);
+				}
 				clientes.add(cliente);
 			}
 			input.close();
 			System.out.println("Clientes carregados com sucesso.");
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			System.out.println("O arquivo dos clientes não existe");
 		}	
 	}
 
@@ -64,6 +70,10 @@ public class Arquivo {
 		        fw.append(""+cli.getIdade());
 		        fw.append(",");
 		        fw.append(cli.getTelefone());
+		        fw.append(",");
+		        fw.append(String.valueOf(cli.isComFilme()));
+		        fw.append(",");
+		        fw.append(cli.getFilme());
 			}
 			
 			fw.flush();
@@ -89,6 +99,12 @@ public class Arquivo {
 				filme.setFaixaEtaria(Integer.parseInt(values[2]));
 				filme.setHoras(Integer.parseInt(values[3]));
 				filme.setMinutos(Integer.parseInt(values[4]));
+				if (values[5].equals("true")){
+					System.out.println("Entro no que ta alugado.");
+					filme.setAlugado(true);
+				}else {
+					filme.setAlugado(false);
+				}
 				
 				filmes.add(filme);
 			}
@@ -120,6 +136,8 @@ public class Arquivo {
 				fw.append("" + fi.getHoras());
 				fw.append(",");
 				fw.append("" + fi.getMinutos());
+				fw.append(",");
+				fw.append(String.valueOf(fi.isAlugado()));
 			}
 			fw.flush();
 			fw.close();

@@ -3,17 +3,24 @@ package LocaFilmes;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
-
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JDesktopPane;
+import java.awt.CardLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Window extends JFrame {
 
-	private JPanel contentPane;
+	private JPanel guiPane;
 	private JMenuBar menuBar;
 	
 	//OPÇÕES DO MENU
@@ -21,47 +28,55 @@ public class Window extends JFrame {
 	private JMenu filmes;
 	private JMenu clientes;
 	
-	/**
-	 * Create the frame.
-	 */
-	public Window() {
-		super("Loca Filmes");
-		setLayout(new FlowLayout());
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		
+	private JMenuItem visualizar;
+	private JDesktopPane desktopPane;
+	
+
+	protected JMenuBar createMenuBar() {
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		//Menus
 		funcionarios = new JMenu("Funcionarios");
 		filmes = new JMenu("Filmes");
+		visualizar = new JMenuItem("Visualizar");
 		clientes = new JMenu("Clientes");
+		funcionarios.add(visualizar);
 		menuBar.add(funcionarios);
 		menuBar.add(filmes);
 		menuBar.add(clientes);
 		
-	}
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
+		actions();
 		
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Window frame = new Window();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		return menuBar;
+	}
+	
+	public void actions() {
+		visualizar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InternalFuncionario internalFunc = new InternalFuncionario();
+				desktopPane.add(internalFunc);
+				internalFunc.show();
 			}
 		});
 	}
+	
+	public Window() {
+		super("Loca Filmes");
+		
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 448, 304);
+		guiPane = new JPanel();
+		guiPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(guiPane);
+		guiPane.setLayout(new CardLayout(0, 0));
+		
+		desktopPane = new JDesktopPane();
+		guiPane.add(desktopPane);
+		setJMenuBar(createMenuBar());
+	}
 
+	public void createFrame() {
+		Window frame = new Window();
+		frame.setVisible(true);
+	}
 }

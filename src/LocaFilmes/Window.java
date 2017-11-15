@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -46,16 +47,32 @@ public class Window extends JFrame {
 		menuBar.add(clientes);
 		
 		actions();
-		
 		return menuBar;
 	}
 	
 	public void actions() {
 		visualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InternalFuncionario internalFunc = new InternalFuncionario();
-				desktopPane.add(internalFunc);
-				internalFunc.show();
+				boolean existe = true;
+				try {
+					 JInternalFrame[] frames = desktopPane.getAllFrames();
+					 for (int i = 0; i <= frames.length; i++) {
+						 if (frames[i].getTitle() == "Funcionarios") {
+							 frames[i].dispose();
+						 }else {
+							 existe = false;
+						 }
+					 }
+					 if (!existe) {
+						 InternalFuncionario internalFunc = new InternalFuncionario();
+						desktopPane.add(internalFunc);
+						internalFunc.show(); 
+					 }	
+				}catch (ArrayIndexOutOfBoundsException error) {
+					InternalFuncionario internalFunc = new InternalFuncionario();
+					desktopPane.add(internalFunc);
+					internalFunc.show(); 
+				}	
 			}
 		});
 	}
@@ -63,8 +80,9 @@ public class Window extends JFrame {
 	public Window() {
 		super("Loca Filmes");
 		
+		setSize(1400, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 448, 304);
+		//setBounds(100, 100, 448, 304);
 		guiPane = new JPanel();
 		guiPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(guiPane);

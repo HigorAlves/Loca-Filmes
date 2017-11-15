@@ -29,7 +29,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class InternalFuncionario extends JInternalFrame{
-	private int i = 0;
 	private JPanel guiPane;
 	private JLabel nome;
 	private JLabel sobreNome;
@@ -140,17 +139,7 @@ public class InternalFuncionario extends JInternalFrame{
 		List<Funcionario> funcionarios = new LinkedList<>();
 		btCadastrar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
-				Funcionario func = new Funcionario();
-				func.setNome("Higor");
-				funcionarios.add(func);
-				i ++;
-			}
-		});
-		btAlterar.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println(i);
+
 			}
 		});
 	}

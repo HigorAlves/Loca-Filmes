@@ -1,10 +1,14 @@
 package LocaFilmes;
 
 import java.awt.EventQueue;
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class Main {
 
 	public static void main(String[] args) {
+		
 		Window window = new Window();
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

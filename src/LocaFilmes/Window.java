@@ -12,6 +12,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.List;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JDesktopPane;
@@ -28,8 +30,10 @@ public class Window extends JFrame {
 	private JMenu funcionarios;
 	private JMenu filmes;
 	private JMenu clientes;
+	private JMenu sistema;
 	
 	private JMenuItem visualizar;
+	private JMenuItem configuracoes;
 	private JDesktopPane desktopPane;
 	
 
@@ -39,12 +43,19 @@ public class Window extends JFrame {
 		
 		funcionarios = new JMenu("Funcionarios");
 		filmes = new JMenu("Filmes");
-		visualizar = new JMenuItem("Visualizar");
 		clientes = new JMenu("Clientes");
+		sistema = new JMenu("Sistema");
+		
+		visualizar = new JMenuItem("Visualizar");
+		configuracoes = new JMenuItem("Configurações");
+		
 		funcionarios.add(visualizar);
+		sistema.add(configuracoes);
+		
 		menuBar.add(funcionarios);
 		menuBar.add(filmes);
 		menuBar.add(clientes);
+		menuBar.add(sistema);
 		
 		actions();
 		return menuBar;
@@ -65,10 +76,10 @@ public class Window extends JFrame {
 					 }
 					 if (!existe) {
 						 InternalFuncionario internalFunc = new InternalFuncionario();
-						desktopPane.add(internalFunc);
-						internalFunc.show(); 
+						 desktopPane.add(internalFunc);
+						 internalFunc.show(); 
 					 }	
-				}catch (ArrayIndexOutOfBoundsException error) {
+				} catch (ArrayIndexOutOfBoundsException error) {
 					InternalFuncionario internalFunc = new InternalFuncionario();
 					desktopPane.add(internalFunc);
 					internalFunc.show(); 
@@ -82,7 +93,7 @@ public class Window extends JFrame {
 		
 		setSize(1400, 1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		//setBounds(100, 100, 448, 304);
+		setLocationRelativeTo(null);
 		guiPane = new JPanel();
 		guiPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(guiPane);

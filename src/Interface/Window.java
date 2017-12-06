@@ -1,6 +1,8 @@
 package Interface;
 
 import java.awt.CardLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
@@ -44,6 +46,7 @@ public class Window extends JFrame{
 		pane.add(desktopPane);
 		
 		setJMenuBar(criarMenuBar());
+		actions();
 	}
 	
 	private JMenuBar criarMenuBar() {
@@ -77,6 +80,22 @@ public class Window extends JFrame{
 		menuBar.add(mCliente);
 		
 		return menuBar;
+	}
+	
+	private void actions() {
+		miCadastrar.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				try {
+					desktopPane.add(JFuncionarioCadastrar.getInstancia());
+					JFuncionarioCadastrar.getInstancia().setVisible(true);
+				}catch(IllegalArgumentException ERROR) {
+					desktopPane.remove(JFuncionarioCadastrar.getInstancia());
+					desktopPane.add(JFuncionarioCadastrar.getInstancia());
+					JFuncionarioCadastrar.getInstancia().setVisible(true);
+				}
+			}
+		});
 	}
 	
 	public void createFrame() {

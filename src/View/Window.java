@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -80,30 +81,36 @@ public class Window extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FuncionarioView view = (FuncionarioView)AbsFactory.getFactory("Funcionario").criarView();;
-				try {
-					desktopPane.add(view);
-					view.setVisible(true);
-				}catch(IllegalArgumentException error) {
-					desktopPane.remove(view);
-					desktopPane.add(view);
-					view.setVisible(true);
-				}
+				criarInternalPane(view);
 			}
 		});
+		
+		miFTela.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				FilmeView view = (FilmeView)AbsFactory.getFactory("Filme").criarView();
+				criarInternalPane(view);
+			}
+		});
+		
 		miCTela.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				ClienteView view = (ClienteView)AbsFactory.getFactory("Cliente").criarView();
-				try {
-					desktopPane.add(view);
-					view.setVisible(true);
-				}catch(IllegalArgumentException error){
-					desktopPane.remove(view);
-					desktopPane.add(view);
-					view.setVisible(true);
-				}
+				criarInternalPane(view);
 			}
 		});
+	}
+	
+	private void criarInternalPane(JInternalFrame view) {
+		try {
+			desktopPane.add(view);
+			view.setVisible(true);
+		}catch(IllegalArgumentException error){
+			desktopPane.remove(view);
+			desktopPane.add(view);
+			view.setVisible(true);
+		}
 	}
 	
 	public void createFrame() {

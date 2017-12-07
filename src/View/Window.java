@@ -12,7 +12,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Model.AbsFactory;
+import Interface.AbsFactory;
 
 public class Window extends JFrame{
 	private JPanel pane;
@@ -21,16 +21,13 @@ public class Window extends JFrame{
 	private JMenuBar menuBar;
 	
 	private JMenu mFuncionario;
-	private JMenuItem miCadastrar;
-	private JMenuItem miEditar;
+	private JMenuItem miTela;
 	
 	private JMenu mFilmes;
-	private JMenuItem miFCadastrar;
-	private JMenuItem miFEditar;
+	private JMenuItem miFTela;
 	
 	private JMenu mCliente;
-	private JMenuItem miCCadastrar;
-	private JMenuItem miCEditar;
+	private JMenuItem miCTela;
 	private JMenuItem miCAlugar;
 	
 	public Window() {
@@ -56,25 +53,19 @@ public class Window extends JFrame{
 		
 		//MENU FUNCIONARIO
 		mFuncionario = new JMenu("Funcionario");
-		miCadastrar = new JMenuItem("Cadastrar");
-		miEditar = new JMenuItem("Editar");
-		mFuncionario.add(miCadastrar);
-		mFuncionario.add(miEditar);
+		miTela = new JMenuItem("Visualizar");
+		mFuncionario.add(miTela);
 		
 		//MENU FILMES
 		mFilmes = new JMenu("Filmes");
-		miFCadastrar = new JMenuItem("Cadastrar");
-		miFEditar = new JMenuItem("Editar");
-		mFilmes.add(miFCadastrar);
-		mFilmes.add(miFEditar);
+		miFTela = new JMenuItem("Tela");
+		mFilmes.add(miFTela);
 		
 		//MENU CLIENTE
 		mCliente = new JMenu("Cliente");
-		miCCadastrar = new JMenuItem("Cadastrar");
-		miCEditar = new JMenuItem("Editar");
+		miCTela = new JMenuItem("Tela");
 		miCAlugar = new JMenuItem("Alugar");
-		mCliente.add(miCCadastrar);
-		mCliente.add(miCEditar);
+		mCliente.add(miCTela);
 		mCliente.add(miCAlugar);
 		
 		menuBar.add(mFuncionario);
@@ -85,7 +76,7 @@ public class Window extends JFrame{
 	}
 	
 	private void actions() {
-		miCadastrar.addActionListener(new ActionListener() {
+		miTela.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				FuncionarioView view = (FuncionarioView)AbsFactory.getFactory("Funcionario").criarView();;
@@ -93,7 +84,20 @@ public class Window extends JFrame{
 					desktopPane.add(view);
 					view.setVisible(true);
 				}catch(IllegalArgumentException error) {
-					error.printStackTrace();
+					desktopPane.remove(view);
+					desktopPane.add(view);
+					view.setVisible(true);
+				}
+			}
+		});
+		miCTela.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				ClienteView view = (ClienteView)AbsFactory.getFactory("Cliente").criarView();
+				try {
+					desktopPane.add(view);
+					view.setVisible(true);
+				}catch(IllegalArgumentException error){
 					desktopPane.remove(view);
 					desktopPane.add(view);
 					view.setVisible(true);

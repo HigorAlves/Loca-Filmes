@@ -55,7 +55,7 @@ public class FuncionarioView extends JInternalFrame implements View {
 	};
 	
 	private FuncionarioView() {
-		super("Funcionario - Cadastrar",true,true,true);
+		super("Funcionario",true,true,true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setSize(1300, 300);
 		

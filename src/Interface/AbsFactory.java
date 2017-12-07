@@ -1,4 +1,4 @@
-package Model;
+package Interface;
 
 import View.View;
 
@@ -10,6 +10,8 @@ public abstract class AbsFactory {
 	public static AbsFactory getFactory(String factory) {
 		if(factory.equals("Funcionario")) {
 			return new FuncionarioFactory();
+		}if(factory.equals("Cliente")) {
+			return new ClienteFactoryCadastro();
 		}else {
 			return null;
 		}

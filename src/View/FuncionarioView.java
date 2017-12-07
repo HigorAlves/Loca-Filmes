@@ -1,8 +1,9 @@
-package Interface;
+package View;
 
 import java.awt.Dimension;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
@@ -11,11 +12,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class JFuncionarioCadastrar extends JInternalFrame {
-	private static JFuncionarioCadastrar INSTANCIA = null;
+public class FuncionarioView extends JInternalFrame implements View {
+	private static FuncionarioView INSTANCIA = null;
 	
 	private JLabel lbID;
-	private JTextField tfID;
+	private JComboBox cbId;
 	private JLabel lbNome;
 	private JTextField tfNome;
 	private JLabel lbSobrenome;
@@ -28,7 +29,10 @@ public class JFuncionarioCadastrar extends JInternalFrame {
 	private JTextField tfCargo;
 	private JLabel lbSalario;
 	private JTextField tfSalario;
+	
 	private JButton btSalvar;
+	private JButton btEditar;
+	private JButton btDeletar;
 	
 	private JPanel pane;
 	
@@ -40,7 +44,7 @@ public class JFuncionarioCadastrar extends JInternalFrame {
 			"Nome",
 			"Sobrenome",
 			"Idade",
-			"Endereço",
+			"Endereï¿½o",
 			"Cargo",
 			"Salario"
 	};
@@ -50,10 +54,10 @@ public class JFuncionarioCadastrar extends JInternalFrame {
 		{"01","Higor","Alves","20","Rua do Java","Dono","25.000"}
 	};
 	
-	private JFuncionarioCadastrar() {
+	private FuncionarioView() {
 		super("Funcionario - Cadastrar",true,true,true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(1200, 200);
+		setSize(1300, 300);
 		
 		setContentPane(createGui());
 	}
@@ -62,28 +66,30 @@ public class JFuncionarioCadastrar extends JInternalFrame {
 		pane = new JPanel();
 		
 		lbID = new JLabel("ID:");
-		tfID = new JTextField(2);
+		cbId = new JComboBox<>();
 		lbNome = new JLabel("Nome:");
 		tfNome = new JTextField(10);
 		lbSobrenome = new JLabel("Sobrenome:");
 		tfSobrenome = new JTextField(10);
 		lbIdade = new JLabel("Idade:");
 		tfIdade = new JTextField(10);
-		lbEndereco = new JLabel("Endereço:");
+		lbEndereco = new JLabel("Endereï¿½o:");
 		tfEndereco = new JTextField(20);
 		lbCargo = new JLabel("Cargo:");
 		tfCargo = new JTextField(6);
 		lbSalario = new JLabel("Salario:");
 		tfSalario = new JTextField(6);
 		btSalvar = new JButton("Salvar");
+		btEditar = new JButton("Editar");
+		btDeletar = new JButton("Deletar");
 		
 		tabela = new JTable(dados, colunas);
 		tabelaRolagem = new JScrollPane(tabela);
-		tabelaRolagem.setPreferredSize(new Dimension(1150, 100));
+		tabelaRolagem.setPreferredSize(new Dimension(1200, 200));
 		tabela.setEnabled(false);
 		
 		pane.add(lbID);
-		pane.add(tfID);
+		pane.add(cbId);
 		pane.add(lbNome);
 		pane.add(tfNome);
 		pane.add(lbSobrenome);
@@ -97,14 +103,16 @@ public class JFuncionarioCadastrar extends JInternalFrame {
 		pane.add(lbSalario);
 		pane.add(tfSalario);
 		pane.add(btSalvar);
+		pane.add(btEditar);
+		pane.add(btDeletar);
 		pane.add(tabelaRolagem);
 		
 		return pane;
 	}
 	
-	public static synchronized JFuncionarioCadastrar getInstancia() {
+	public static synchronized FuncionarioView getInstancia() {
 		if(INSTANCIA == null) {
-			INSTANCIA = new JFuncionarioCadastrar();
+			INSTANCIA = new FuncionarioView();
 		}
 		return INSTANCIA;
 	 }

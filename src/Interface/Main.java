@@ -2,6 +2,8 @@ package Interface;
 
 import java.awt.EventQueue;
 
+import View.Window;
+
 public class Main {
 
 	public static void main(String[] args) {

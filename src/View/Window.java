@@ -1,4 +1,4 @@
-package Interface;
+package View;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -11,6 +11,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Model.AbsFactory;
 
 public class Window extends JFrame{
 	private JPanel pane;
@@ -86,13 +88,15 @@ public class Window extends JFrame{
 		miCadastrar.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				FuncionarioView view = (FuncionarioView)AbsFactory.getFactory("Funcionario").criarView();;
 				try {
-					desktopPane.add(JFuncionarioCadastrar.getInstancia());
-					JFuncionarioCadastrar.getInstancia().setVisible(true);
-				}catch(IllegalArgumentException ERROR) {
-					desktopPane.remove(JFuncionarioCadastrar.getInstancia());
-					desktopPane.add(JFuncionarioCadastrar.getInstancia());
-					JFuncionarioCadastrar.getInstancia().setVisible(true);
+					desktopPane.add(view);
+					view.setVisible(true);
+				}catch(IllegalArgumentException error) {
+					error.printStackTrace();
+					desktopPane.remove(view);
+					desktopPane.add(view);
+					view.setVisible(true);
 				}
 			}
 		});

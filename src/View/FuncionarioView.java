@@ -86,8 +86,7 @@ public class FuncionarioView extends JInternalFrame implements View {
 		tabela = new JTable(dados, colunas);
 		tabelaRolagem = new JScrollPane(tabela);
 		tabelaRolagem.setPreferredSize(new Dimension(1200, 200));
-		tabela.setEnabled(false);
-		
+
 		pane.add(lbID);
 		pane.add(cbId);
 		pane.add(lbNome);

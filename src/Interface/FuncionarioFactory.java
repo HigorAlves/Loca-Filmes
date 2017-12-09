@@ -1,13 +1,13 @@
 package Interface;
 
+import Model.Funcionario;
 import View.FuncionarioView;
 
 public class FuncionarioFactory extends AbsFactory{
 
 	@Override
-	public void criarModelo() {
-		// TODO Auto-generated method stub
-		
+	public Funcionario criarModelo(int id, String nome, String sobrenome, int idade, String endereco, String cargo, float salario) {
+		return new Funcionario(id, nome, sobrenome, idade, endereco, cargo, salario);
 	}
 
 	@Override

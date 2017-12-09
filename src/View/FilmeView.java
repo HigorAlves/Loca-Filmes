@@ -1,10 +1,29 @@
 package View;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class FilmeView extends JInternalFrame implements View {
 	private static FilmeView INSTANCIA = null;
+	
+	private JLabel lbId;
+	private JComboBox cbId;
+	private JLabel lbNome;
+	private JTextField tfNome;
+	private JLabel lbFaixaEtaria;
+	private JTextField tfFaixaEtaria;
+	private JLabel lbDuracao;
+	private JTextField tfDuracao;
+	private JLabel lbTema;
+	private JTextField tfTema;
+	
+	private JButton btSalvar;
+	private JButton btEditar;
+	private JButton btDeletar;
 	
 	private JPanel pane;
 	
@@ -17,6 +36,37 @@ public class FilmeView extends JInternalFrame implements View {
 	}
 	
 	private JPanel createGui() {
+		lbId = new JLabel("ID:");
+		cbId = new JComboBox<>();
+		lbNome = new JLabel("Nome:");
+		tfNome = new JTextField(12);
+		lbFaixaEtaria = new JLabel("Faixa Etaria:");
+		tfFaixaEtaria = new JTextField(5);
+		lbDuracao = new JLabel("Duração:");
+		tfDuracao = new JTextField(4);
+		lbTema = new JLabel("Tema:");
+		tfTema = new JTextField(10);
+		
+		btSalvar = new JButton("Salvar");
+		btEditar = new JButton("Editar");
+		btDeletar = new JButton("Deletar");
+		
+		pane = new JPanel();
+		
+		pane.add(lbId);
+		pane.add(cbId);
+		pane.add(lbNome);
+		pane.add(tfNome);
+		pane.add(lbFaixaEtaria);
+		pane.add(tfFaixaEtaria);
+		pane.add(lbDuracao);
+		pane.add(tfDuracao);
+		pane.add(lbTema);
+		pane.add(tfTema);
+		pane.add(btSalvar);
+		pane.add(btEditar);
+		pane.add(btDeletar);
+		
 		return pane;
 	}
 	

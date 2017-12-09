@@ -1,9 +1,10 @@
 package Interface;
 
+import Model.Pessoa;
 import View.View;
 
 public abstract class AbsFactory {
-	public abstract void criarModelo();
+	public abstract Pessoa criarModelo(int id, String nome, String sobrenome, int idade, String endereco, String cargo, float salario);
 	public abstract void criarController();
 	public abstract View criarView();
 	

@@ -1,6 +1,6 @@
 package Model;
 
-public class Filme {
+public class Filme implements Modelo{
 	private int id;
 	private String nome;
 	private String faixaEtaria;
@@ -37,5 +37,12 @@ public class Filme {
 	public void setTema(String tema) {
 		this.tema = tema;
 	}
-	
+	public Filme(int id, String nome, String faixaEtaria, String duracao, String tema) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.faixaEtaria = faixaEtaria;
+		this.duracao = duracao;
+		this.tema = tema;
+	}
 }

@@ -1,11 +1,11 @@
 package Model;
 
 public abstract class Pessoa {
-	int id;
-	String nome;
-	String sobrenome;
-	int idade;
-	String endereco;
+	private int id;
+	private String nome;
+	private String sobrenome;
+	private int idade;
+	private String endereco;
 	
 	public int getId() {
 		return id;

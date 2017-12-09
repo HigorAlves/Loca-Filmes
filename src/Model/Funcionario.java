@@ -1,8 +1,8 @@
 package Model;
 
 public class Funcionario extends Pessoa{
-	String cargo;
-	float salario;
+	private String cargo;
+	private float salario;
 	
 	public String getCargo() {
 		return cargo;

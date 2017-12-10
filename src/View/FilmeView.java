@@ -79,7 +79,7 @@ public class FilmeView extends JInternalFrame implements View {
 	}
 	
 	private void actions() {
-		btSalvar.addActionListener((ActionListener) AbsFactory.getFactory("Funcionario").criarController(this, btSalvar));
+		btSalvar.addActionListener(AbsFactory.getFactory("Filme").criarController(this, btSalvar));
 	}
 	public static FilmeView getInstancia() {
 		if (INSTANCIA == null) {

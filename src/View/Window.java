@@ -14,8 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Interface.AbsFactory;
+import Interface.InitFactory;
+import Interface.MainFactory;
 
-public class Window extends JFrame{
+public class Window extends JFrame implements View{
+	private static Window instancia = null;
+	
 	private JPanel pane;
 	private JDesktopPane desktopPane;
 	
@@ -31,7 +35,7 @@ public class Window extends JFrame{
 	private JMenuItem miCTela;
 	private JMenuItem miCAlugar;
 	
-	public Window() {
+	private Window() {
 		super("Loca Filmes");
 		
 		setSize(1400, 1000);
@@ -54,7 +58,7 @@ public class Window extends JFrame{
 		
 		//MENU FUNCIONARIO
 		mFuncionario = new JMenu("Funcionario");
-		miTela = new JMenuItem("Visualizar");
+		miTela = new JMenuItem("Funcionario");
 		mFuncionario.add(miTela);
 		
 		//MENU FILMES
@@ -77,13 +81,7 @@ public class Window extends JFrame{
 	}
 	
 	private void actions() {
-		miTela.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FuncionarioView view = (FuncionarioView)AbsFactory.getFactory("Funcionario").criarView();;
-				criarInternalPane(view);
-			}
-		});
+		miTela.addActionListener(MainFactory.initFactory("iniciar").criarController(this, miTela, desktopPane));
 		
 		miFTela.addActionListener(new ActionListener() {
 			@Override
@@ -113,8 +111,10 @@ public class Window extends JFrame{
 		}
 	}
 	
-	public void createFrame() {
-		Window frame = new Window();
-		frame.setVisible(true);
+	public static Window getInstancia() {
+		if (instancia == null) {
+			instancia = new Window();
+		}
+		return instancia;
 	}
 }

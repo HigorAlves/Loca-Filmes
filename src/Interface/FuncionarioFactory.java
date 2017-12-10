@@ -16,7 +16,7 @@ public class FuncionarioFactory extends AbsFactory{
 	}
 
 	@Override
-	public FuncionarioView criarView() {
+	public View criarView() {
 		return FuncionarioView.getInstancia();
 	}
 

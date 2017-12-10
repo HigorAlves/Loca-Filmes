@@ -11,7 +11,7 @@ import Model.Filme;
 import View.FilmeView;
 import View.View;
 
-public class FilmeController implements Controller, ActionListener{
+public class FilmeController implements Controller{
 	FilmeFactory filmeFactory;
 	
 	private View fView;
@@ -21,14 +21,6 @@ public class FilmeController implements Controller, ActionListener{
 		this.fView = fView;
 		this.button = button;
 	}
-
-	
-	public void Cadastrar(int id, String nome, String faixaEtaria, String duracao, String tema) {
-		DataBase database = DataBase.getInstance();
-		database.addFilme((Filme) filmeFactory.criarModelo(id, nome, faixaEtaria, duracao, tema));
-	}
-
-
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

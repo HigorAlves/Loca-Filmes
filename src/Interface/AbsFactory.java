@@ -24,6 +24,8 @@ public abstract class AbsFactory {
 			return new FilmeFactory();
 		}if(factory.equals("Cliente")){
 			return new ClienteFactoryCadastro();
+		}if(factory.equals("Alugar")) {
+			return new ClienteAlugarFactory();
 		}else {
 			return null;
 		}

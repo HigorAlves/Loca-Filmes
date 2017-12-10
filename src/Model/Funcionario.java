@@ -1,6 +1,6 @@
 package Model;
 
-public class Funcionario extends Pessoa{
+public class Funcionario extends Pessoa implements Modelo{
 	private String cargo;
 	private float salario;
 	

@@ -9,15 +9,17 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 import Interface.AbsFactory;
+import View.ClienteView;
+import View.FilmeView;
 import View.FuncionarioView;
 import View.View;
 
-public class Controle implements Controller {
+public class InitControle implements Controller {
 	private View view;
 	private JMenuItem button;
 	private JDesktopPane desktop;
 	
-	public Controle(View view, JMenuItem button, JDesktopPane desktop) {
+	public InitControle(View view, JMenuItem button, JDesktopPane desktop) {
 		this.view = view;
 		this.button = button;
 		this.desktop = desktop;
@@ -28,6 +30,12 @@ public class Controle implements Controller {
 		JMenuItem item = (JMenuItem) e.getSource();
 		if(item.getText().equals("Funcionario")) {
 			FuncionarioView view = (FuncionarioView)AbsFactory.getFactory("Funcionario").criarView();
+			criarPane(view);
+		} else if (item.getText().equals("Filmes")){
+			FilmeView view = (FilmeView)AbsFactory.getFactory("Filme").criarView();
+			criarPane(view);
+		}else if (item.getText().equals("Cadastrar")) {
+			ClienteView view = (ClienteView)AbsFactory.getFactory("Cliente").criarView();
 			criarPane(view);
 		}
 	}

@@ -2,12 +2,12 @@ package Interface;
 
 import java.awt.EventQueue;
 
-import View.Window;
+import View.MainView;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Window window = (Window)MainFactory.initFactory("iniciar").criarView();
+		MainView window = (MainView)AbsMainFactory.initFactory("iniciar").criarView();
 		window.setVisible(true);
 	}
 

@@ -15,10 +15,10 @@ import javax.swing.border.EmptyBorder;
 
 import Interface.AbsFactory;
 import Interface.InitFactory;
-import Interface.MainFactory;
+import Interface.AbsMainFactory;
 
-public class Window extends JFrame implements View{
-	private static Window instancia = null;
+public class MainView extends JFrame implements View{
+	private static MainView instancia = null;
 	
 	private JPanel pane;
 	private JDesktopPane desktopPane;
@@ -35,7 +35,7 @@ public class Window extends JFrame implements View{
 	private JMenuItem miCTela;
 	private JMenuItem miCAlugar;
 	
-	private Window() {
+	private MainView() {
 		super("Loca Filmes");
 		
 		setSize(1400, 1000);
@@ -63,12 +63,12 @@ public class Window extends JFrame implements View{
 		
 		//MENU FILMES
 		mFilmes = new JMenu("Filmes");
-		miFTela = new JMenuItem("Tela");
+		miFTela = new JMenuItem("Filmes");
 		mFilmes.add(miFTela);
 		
 		//MENU CLIENTE
 		mCliente = new JMenu("Cliente");
-		miCTela = new JMenuItem("Tela");
+		miCTela = new JMenuItem("Cadastrar");
 		miCAlugar = new JMenuItem("Alugar");
 		mCliente.add(miCTela);
 		mCliente.add(miCAlugar);
@@ -81,39 +81,15 @@ public class Window extends JFrame implements View{
 	}
 	
 	private void actions() {
-		miTela.addActionListener(MainFactory.initFactory("iniciar").criarController(this, miTela, desktopPane));
-		
-		miFTela.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				FilmeView view = (FilmeView)AbsFactory.getFactory("Filme").criarView();
-				criarInternalPane(view);
-			}
-		});
-		
-		miCTela.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ClienteView view = (ClienteView)AbsFactory.getFactory("Cliente").criarView();
-				criarInternalPane(view);
-			}
-		});
+		miTela.addActionListener(AbsMainFactory.initFactory("iniciar").criarController(this, miTela, desktopPane));
+		miFTela.addActionListener(AbsMainFactory.initFactory("iniciar").criarController(this, miFTela, desktopPane));
+		miCTela.addActionListener(AbsMainFactory.initFactory("iniciar").criarController(this, miCTela, desktopPane));
+		miCAlugar.addActionListener(AbsMainFactory.initFactory("iniciar").criarController(this, miCAlugar, desktopPane));
 	}
 	
-	private void criarInternalPane(JInternalFrame view) {
-		try {
-			desktopPane.add(view);
-			view.setVisible(true);
-		}catch(IllegalArgumentException error){
-			desktopPane.remove(view);
-			desktopPane.add(view);
-			view.setVisible(true);
-		}
-	}
-	
-	public static Window getInstancia() {
+	public static MainView getInstancia() {
 		if (instancia == null) {
-			instancia = new Window();
+			instancia = new MainView();
 		}
 		return instancia;
 	}

@@ -4,21 +4,21 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuItem;
 
-import Controller.Controle;
+import Controller.InitControle;
 import Controller.Controller;
 import View.View;
-import View.Window;
+import View.MainView;
 
-public class InitFactory extends MainFactory{
+public class InitFactory extends AbsMainFactory{
 
 	@Override
 	public View criarView() {
-		return Window.getInstancia();
+		return MainView.getInstancia();
 	}
 
 	@Override
 	public Controller criarController(View fView, JMenuItem button, JDesktopPane desktop) {
-		return new Controle(fView, button, desktop);
+		return new InitControle(fView, button, desktop);
 	}
 
 }

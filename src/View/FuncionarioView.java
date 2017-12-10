@@ -4,13 +4,15 @@ import java.awt.Dimension;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import Model.TabelaFuncionarioModel;
 
 public class FuncionarioView extends JInternalFrame implements View {
 	private static FuncionarioView INSTANCIA = null;
@@ -34,30 +36,15 @@ public class FuncionarioView extends JInternalFrame implements View {
 	private JButton btEditar;
 	private JButton btDeletar;
 	
+	private TabelaFuncionarioModel tableModel;
+	private JTable table;
+	
 	private JPanel pane;
-	
-	private JTable tabela;
-	private JScrollPane tabelaRolagem;
-	
-	private String [] colunas = {
-			"ID",
-			"Nome",
-			"Sobrenome",
-			"Idade",
-			"Endere�o",
-			"Cargo",
-			"Salario"
-	};
-	
-	//SOmente para teste da tabela
-	private Object [][] dados = {
-		{"01","Higor","Alves","20","Rua do Java","Dono","25.000"}
-	};
 	
 	private FuncionarioView() {
 		super("Funcionario",true,true,true);
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-		setSize(1300, 300);
+		setSize(1400, 300);
 		
 		setContentPane(createGui());
 	}
@@ -72,21 +59,23 @@ public class FuncionarioView extends JInternalFrame implements View {
 		lbSobrenome = new JLabel("Sobrenome:");
 		tfSobrenome = new JTextField(10);
 		lbIdade = new JLabel("Idade:");
-		tfIdade = new JTextField(10);
+		tfIdade = new JTextField(2);
 		lbEndereco = new JLabel("Endere�o:");
 		tfEndereco = new JTextField(20);
 		lbCargo = new JLabel("Cargo:");
-		tfCargo = new JTextField(6);
+		tfCargo = new JTextField(4);
 		lbSalario = new JLabel("Salario:");
-		tfSalario = new JTextField(6);
+		tfSalario = new JTextField(4);
 		btSalvar = new JButton("Salvar");
 		btEditar = new JButton("Editar");
 		btDeletar = new JButton("Deletar");
 		
-		tabela = new JTable(dados, colunas);
-		tabelaRolagem = new JScrollPane(tabela);
-		tabelaRolagem.setPreferredSize(new Dimension(1200, 200));
-
+		tableModel = new TabelaFuncionarioModel();
+		JTable tabela = new JTable();
+		tabela.setModel(tableModel);
+		JScrollPane barraRolagem = new JScrollPane(tabela);
+		barraRolagem.setPreferredSize(new Dimension(1300, 240));
+		
 		pane.add(lbID);
 		pane.add(cbId);
 		pane.add(lbNome);
@@ -104,7 +93,7 @@ public class FuncionarioView extends JInternalFrame implements View {
 		pane.add(btSalvar);
 		pane.add(btEditar);
 		pane.add(btDeletar);
-		pane.add(tabelaRolagem);
+		pane.add(barraRolagem); 
 		
 		return pane;
 	}

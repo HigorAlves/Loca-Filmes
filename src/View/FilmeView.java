@@ -1,11 +1,18 @@
 package View;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Controller.FilmeController;
+import Interface.AbsFactory;
+import Interface.FilmeFactory;
 
 public class FilmeView extends JInternalFrame implements View {
 	private static FilmeView INSTANCIA = null;
@@ -33,6 +40,7 @@ public class FilmeView extends JInternalFrame implements View {
 		setSize(1300,300);
 		
 		setContentPane(createGui());
+		actions();
 	}
 	
 	private JPanel createGui() {
@@ -70,6 +78,9 @@ public class FilmeView extends JInternalFrame implements View {
 		return pane;
 	}
 	
+	private void actions() {
+		btSalvar.addActionListener((ActionListener) AbsFactory.getFactory("Funcionario").criarController(this, btSalvar));
+	}
 	public static FilmeView getInstancia() {
 		if (INSTANCIA == null) {
 			INSTANCIA = new FilmeView();

@@ -7,6 +7,7 @@ import javax.swing.JButton;
 import Controller.Controller;
 import Model.Modelo;
 import Model.Pessoa;
+import Model.TableModel;
 import View.ClienteView;
 import View.FilmeView;
 

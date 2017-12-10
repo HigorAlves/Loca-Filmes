@@ -3,8 +3,10 @@ package Interface;
 import javax.swing.JButton;
 
 import Controller.Controller;
+import Controller.FuncionarioController;
 import Model.Funcionario;
 import Model.Modelo;
+import Model.TableModel;
 import View.FuncionarioView;
 import View.View;
 
@@ -30,8 +32,8 @@ public class FuncionarioFactory extends AbsFactory{
 	}
 
 	@Override
-	public Controller criarController(View fView, JButton button) {
-		return null;
+	public Controller criarController(View view, JButton button) {
+		return new FuncionarioController(view, button);
 	}
 
 }

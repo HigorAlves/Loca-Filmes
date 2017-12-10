@@ -4,6 +4,7 @@ import javax.swing.JButton;
 
 import Controller.Controller;
 import Model.Modelo;
+import Model.TableModel;
 import View.ClienteAlugarView;
 import View.View;
 

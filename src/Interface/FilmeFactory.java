@@ -9,6 +9,7 @@ import Controller.FilmeController;
 import Model.Filme;
 import Model.Modelo;
 import Model.Pessoa;
+import Model.TableModel;
 import View.FilmeView;
 
 public class FilmeFactory extends AbsFactory {
@@ -39,5 +40,4 @@ public class FilmeFactory extends AbsFactory {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }

@@ -12,7 +12,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+import Interface.AbsFactory;
+import Interface.AbsMainFactory;
 import Model.TabelaFuncionarioModel;
+import Model.TableModel;
 
 public class FuncionarioView extends JInternalFrame implements View {
 	private static FuncionarioView INSTANCIA = null;
@@ -36,8 +39,8 @@ public class FuncionarioView extends JInternalFrame implements View {
 	private JButton btEditar;
 	private JButton btDeletar;
 	
-	private TabelaFuncionarioModel tableModel;
-	private JTable table;
+	private TableModel tableModel;
+	private JTable tabela;
 	
 	private JPanel pane;
 	
@@ -47,6 +50,7 @@ public class FuncionarioView extends JInternalFrame implements View {
 		setSize(1400, 300);
 		
 		setContentPane(createGui());
+		actions();
 	}
 	
 	private JPanel createGui() {
@@ -70,9 +74,10 @@ public class FuncionarioView extends JInternalFrame implements View {
 		btEditar = new JButton("Editar");
 		btDeletar = new JButton("Deletar");
 		
-		tableModel = new TabelaFuncionarioModel();
-		JTable tabela = new JTable();
-		tabela.setModel(tableModel);
+		tableModel =  new TabelaFuncionarioModel();
+		tabela = new JTable();
+		tabela.setModel((javax.swing.table.TableModel) tableModel);
+		
 		JScrollPane barraRolagem = new JScrollPane(tabela);
 		barraRolagem.setPreferredSize(new Dimension(1300, 240));
 		
@@ -96,6 +101,10 @@ public class FuncionarioView extends JInternalFrame implements View {
 		pane.add(barraRolagem); 
 		
 		return pane;
+	}
+	
+	private void actions() {
+		btSalvar.addActionListener(AbsFactory.getFactory("Funcionario").criarController(this, btSalvar));
 	}
 	
 	public static synchronized FuncionarioView getInstancia() {

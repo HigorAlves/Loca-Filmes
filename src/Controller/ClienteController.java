@@ -3,6 +3,6 @@ package Controller;
 /**
  * @author Higor Alves
  */
-public interface Controller {
+public class ClienteController implements Controller{
     
 }

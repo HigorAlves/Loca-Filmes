@@ -1,4 +1,8 @@
 package View;
 
-public interface View{
+/**
+ * @author Higor Alves
+ */
+public interface View {
+    
 }

@@ -1,11 +1,26 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Model;
 
-public class Cliente extends Pessoa{
-	public Cliente(int id, String nome, String sobrenome, int idade, String endereco) {
-		this.id = id;
-		this.nome = nome;
-		this.sobrenome = sobrenome;
-		this.idade = idade;
-		this.endereco = endereco;
-	}
+import javax.swing.JTextField;
+
+/**
+ *
+ * @author Higor Alves
+ */
+public class Cliente extends Pessoa implements Comparable<Cliente>{
+    @Override
+    public int compareTo(Cliente o) {
+        return id-o.getId();
+    }
+    
+    public boolean equals(Object o){
+        if (o instanceof Cliente){
+            return nome.equalsIgnoreCase(((Cliente) o).getNome());
+        }
+        return false;
+    }
 }

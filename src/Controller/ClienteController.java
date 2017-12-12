@@ -36,9 +36,11 @@ public class ClienteController implements Controller{
     }
     public boolean removerRow(JTable table, TableModelCliente tableModel){
         if(table.getSelectedRow() != -1){
-            //Object teste = tableModel.getValueAt(table.getSelectedRow(), 0);
-            //System.out.print(teste);
+            Object teste = tableModel.getValueAt(table.getSelectedRow(), 0);
+            Database.getInstancia().removeData((int)teste);
+            //tableModel.updateTable(Database.getInstancia().getClientes());
             tableModel.removeRow(table.getSelectedRow());
+            //Database.getInstancia().removeData((int)teste);
             return true;
         }else{
             return false;

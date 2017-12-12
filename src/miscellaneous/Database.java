@@ -48,10 +48,10 @@ public class Database {
         
     }
     
-    public void removeData(Cliente cliente, int id){
+    public void removeData(int id){
         for (Cliente c: clientes){
             if (c.getId() == id){
-                clientes.remove(c);
+                this.clientes.remove(c);
             }
         }
     }

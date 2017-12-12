@@ -12,6 +12,7 @@ import miscellaneous.FabricaAbstrata;
 public class ClienteView extends javax.swing.JInternalFrame implements View {
     private static ClienteView instancia = new ClienteView();
     private TableModelCliente tableModel = new TableModelCliente();
+    private ClienteController controller = (ClienteController) FabricaAbstrata.getFabrica("Cliente").criarControle();
 
     /**
      * Creates new form FuncionarioView
@@ -39,9 +40,11 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableCliente = new javax.swing.JTable();
 
         setClosable(true);
+        setMaximizable(true);
+        setResizable(true);
         setTitle("Cliente");
 
         jLabel1.setText("ID:");
@@ -62,14 +65,19 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         jButton2.setText("Editar");
 
         jButton3.setText("Deletar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
-        jTable1.setAutoCreateRowSorter(true);
-        jTable1.setModel(tableModel);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("ID");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Nome");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Idade");
+        TableCliente.setAutoCreateRowSorter(true);
+        TableCliente.setModel(tableModel);
+        jScrollPane1.setViewportView(TableCliente);
+        if (TableCliente.getColumnModel().getColumnCount() > 0) {
+            TableCliente.getColumnModel().getColumn(0).setHeaderValue("ID");
+            TableCliente.getColumnModel().getColumn(1).setHeaderValue("Nome");
+            TableCliente.getColumnModel().getColumn(2).setHeaderValue("Idade");
         }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -79,7 +87,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -105,7 +113,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -118,7 +126,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -126,15 +134,16 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ClienteController controller = (ClienteController) FabricaAbstrata.getFabrica("Cliente").criarControle();
-        Cliente c = new Cliente();
-        c.setIdade(Integer.parseInt(tfIdade.getText()));
-        c.setNome(tfNome.getText());
-        tableModel.addRow(c);
+        controller.addRow(tfNome, tfIdade, tableModel);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        controller.removerRow(TableCliente, tableModel);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TableCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -143,7 +152,6 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField tfIdade;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables

@@ -44,4 +44,9 @@ public class TableModelCliente extends AbstractTableModel {
         this.clientes.add(cliente);
         this.fireTableDataChanged();
     }
+    
+    public void removeRow(int linha){
+        this.clientes.remove(linha);
+        this.fireTableRowsDeleted(linha, linha);
+    }
 }

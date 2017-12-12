@@ -39,6 +39,24 @@ public class TableModelCliente extends AbstractTableModel {
                 return null;
         }
     }
+
+    @Override
+    public void setValueAt(Object valor, int linha, int coluna) {
+        switch(coluna){
+            case 0:
+                clientes.get(linha).setId(Integer.parseInt((String)valor));
+                break;
+            case 1:
+                clientes.get(linha).setNome((String)valor);
+                break;
+            case 2:
+                clientes.get(linha).setIdade(Integer.parseInt((String)valor));
+                break;
+            default:  
+                break;
+        }
+        this.fireTableRowsUpdated(linha, linha);
+    }
     
     public void addRow(Cliente cliente){
         this.clientes.add(cliente);

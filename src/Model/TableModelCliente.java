@@ -10,16 +10,17 @@ import miscellaneous.Database;
  * @author Higor Alves
  */
 public class TableModelCliente extends AbstractTableModel {
-    private List<Cliente> clientes = new LinkedList<>();
-    private Database database = Database.getInstancia();
-    private String[] colunas = {"ID","Nome","Idade"};
+    private List<Cliente> clientes;
+    private final String[] colunas = {"ID","Nome","Idade"};
     
-    public void updateTable(Set<Cliente> clientes){
-        this.clientes.clear();
-        this.clientes.addAll(clientes);
+    public TableModelCliente(List<Cliente> clientes){
+        this.clientes = clientes;
+    }
+    
+    public void updateTable(){
         this.fireTableDataChanged();
     }
-
+    
     @Override
     public String getColumnName(int column) {
         return colunas[column];
@@ -39,11 +40,11 @@ public class TableModelCliente extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         switch(coluna){
             case 0:
-                return clientes.get(linha).getId();
+                return Database.getInstancia().getClientes().get(linha).getId();
             case 1:
-                return clientes.get(linha).getNome();
+                return Database.getInstancia().getClientes().get(linha).getNome();
             case 2:
-                return clientes.get(linha).getIdade();
+                return Database.getInstancia().getClientes().get(linha).getIdade();
             default:
                 return null;
         }
@@ -53,24 +54,17 @@ public class TableModelCliente extends AbstractTableModel {
     public void setValueAt(Object valor, int linha, int coluna) {
         switch(coluna){
             case 0:
-                clientes.get(linha).setId(Integer.parseInt((String)valor));
+                Database.getInstancia().getClientes().get(linha).setId(Integer.parseInt((String)valor));
                 break;
             case 1:
-                clientes.get(linha).setNome((String)valor);
+                Database.getInstancia().getClientes().get(linha).setNome((String)valor);
                 break;
             case 2:
-                clientes.get(linha).setIdade(Integer.parseInt((String)valor));
+                Database.getInstancia().getClientes().get(linha).setIdade(Integer.parseInt((String)valor));
                 break;
             default:  
                 break;
         }
         this.fireTableRowsUpdated(linha, linha);
-    }
-    
-    
-    
-    public void removeRow(int linha){
-        this.clientes.remove(linha);
-        this.fireTableRowsDeleted(linha, linha);
     }
 }

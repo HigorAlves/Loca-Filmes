@@ -15,17 +15,16 @@ import miscellaneous.FabricaAbstrata;
 public class ClienteController implements Controller{
     private Cliente cliente;
     
-    public boolean addRow(JTextField nome, JTextField idade, TableModelCliente tableModel){
+    public boolean addRow(String nome, String idade){
         try{
             cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
             
-            cliente.setId(Database.getInstancia().getId());
-            cliente.setNome(nome.getText());
-            cliente.setIdade(Integer.parseInt(idade.getText()));
+            cliente.setId(Database.getInstancia().getClienteId());
+            cliente.setNome(nome);
+            cliente.setIdade(Integer.parseInt(idade));
             
             if (Database.getInstancia().addData(cliente)){
-                tableModel.updateTable(Database.getInstancia().getClientes());
-                Database.getInstancia().setId(1);
+                Database.getInstancia().setClienteId(1);
             }else {
                 return false;
             }
@@ -34,34 +33,29 @@ public class ClienteController implements Controller{
         }
         return true;
     }
-    public boolean removerRow(JTable table, TableModelCliente tableModel){
-        if(table.getSelectedRow() != -1){
-            Object teste = tableModel.getValueAt(table.getSelectedRow(), 0);
-            Database.getInstancia().removeData((int)teste);
-            //tableModel.updateTable(Database.getInstancia().getClientes());
-            tableModel.removeRow(table.getSelectedRow());
-            //Database.getInstancia().removeData((int)teste);
-            return true;
-        }else{
-            return false;
-        }
+    public boolean removerRow(int id){
+        Database.getInstancia().removeData(id);
+        return true;
     }
-    public boolean editRow(JTable table, TableModelCliente tableModel, JTextField nome, JTextField idade){
-        try{
-            if(table.getSelectedRow() != -1){
-                tableModel.setValueAt(nome.getText(), table.getSelectedRow(), 1);
-                tableModel.setValueAt(idade.getText(), table.getSelectedRow(), 2);
-                return true;
-            }
-        }catch (NumberFormatException e){
-            return false;
+    public boolean alterarRow(int id, String nome, int idade, String newNome, int newIdade){
+        cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
+        cliente.setId(id);
+        cliente.setNome(nome);
+        cliente.setIdade(idade);
+        
+        if (Database.getInstancia().editData(cliente)){
+            int index = Database.getInstancia().getClientes().indexOf(cliente);
+            cliente.setNome(newNome);
+            cliente.setIdade(newIdade);
+            Database.getInstancia().getClientes().set(index, cliente);
+            return true;
         }
         return false;
     }
     
     //POPUPS PARA MANDAR MENSAGENS DE ERROR OU SUCESSO
     public void popUpSucesso(JPanel pane, String mensagem){
-        JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.OK_OPTION);
+        JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
     public void popUpError(JPanel pane, String titulo, String mensagem){
         JOptionPane.showMessageDialog(pane, mensagem, titulo, JOptionPane.ERROR_MESSAGE);

@@ -14,25 +14,29 @@ import java.util.TreeSet;
 public class Database {
     private static Database instancia = null;
     
-    private int id;
-    private Set<Cliente> clientes;
-    private Set<Filme> filmes;
-    private Set<Locacao> locacoes;
+    private int clienteId;
+    private int filmeId;
+    private int locacaoId;
+    private List<Cliente> clientes;
+    private List<Filme> filmes;
+    private List<Locacao> locacoes;
     
     private Database(){
-        clientes = new TreeSet<>();
-        filmes = new TreeSet<>();
-        locacoes = new TreeSet<>();
-        id = 0;
+        clientes = new LinkedList<>();
+        filmes = new LinkedList<>();
+        locacoes = new LinkedList<>();
+        clienteId = 0;
+        filmeId = 0;
+        locacaoId = 0;
     }
-    public int getId(){
-        return id;
+    public int getClienteId(){
+        return this.clienteId;
     }
-    public void setId(int id){
-        this.id += id;
+    public void setClienteId(int id){
+        this.clienteId += id;
     }
     
-    public Set<Cliente> getClientes(){
+    public List<Cliente> getClientes(){
         return clientes;
     }
     
@@ -48,12 +52,14 @@ public class Database {
         
     }
     
-    public void removeData(int id){
-        for (Cliente c: clientes){
+    public boolean removeData(int id){
+        for (Cliente c: this.clientes){
             if (c.getId() == id){
                 this.clientes.remove(c);
+                return true;
             }
         }
+        return false;
     }
     
     public void removeData(Filme filme){
@@ -64,10 +70,8 @@ public class Database {
         
     }
     
-    public boolean editData(Cliente cliente, String nome, int idade){
+    public boolean editData(Cliente cliente){
         if(clientes.contains(cliente)){
-            cliente.setNome(nome);
-            cliente.setIdade(idade);
             return true;
         }
         return false;

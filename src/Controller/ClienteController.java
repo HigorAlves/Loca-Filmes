@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Cliente;
 import Model.TableModelCliente;
-import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -26,18 +25,28 @@ public class ClienteController implements Controller{
         }
         return true;
     }
-    public void removerRow(JTable table, TableModelCliente tableModel){
+    public boolean removerRow(JTable table, TableModelCliente tableModel){
         if(table.getSelectedRow() != -1){
             tableModel.removeRow(table.getSelectedRow());
+            return true;
+        }else{
+            return false;
         }
     }
-    public void editRow(JTable table, TableModelCliente tableModel, JTextField nome, JTextField idade){
-        if(table.getSelectedRow() != -1){
-            tableModel.setValueAt(nome.getText(), table.getSelectedRow(), 1);
-            tableModel.setValueAt(idade.getText(), table.getSelectedRow(), 2);
+    public boolean editRow(JTable table, TableModelCliente tableModel, JTextField nome, JTextField idade){
+        try{
+            if(table.getSelectedRow() != -1){
+                tableModel.setValueAt(nome.getText(), table.getSelectedRow(), 1);
+                tableModel.setValueAt(idade.getText(), table.getSelectedRow(), 2);
+                return true;
+            }
+        }catch (NumberFormatException e){
+            return false;
         }
+        return false;
     }
     
+    //POPUPS PARA MANDAR MENSAGENS DE ERROR OU SUCESSO
     public void popUpSucesso(JPanel pane, String mensagem){
         JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.OK_OPTION);
     }

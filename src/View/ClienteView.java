@@ -148,7 +148,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(controller.addRow(tfNome, tfIdade, tableModel) == true){
+        if(controller.addRow(tfNome, tfIdade, tableModel)){
             controller.popUpSucesso(jPanel1, "Cliente Cadastrado com sucesso!");
         }else{
             controller.popUpError(jPanel1, "Não foi possivel cadastrar novo cliente verifique se todos os campos foram preenchidos");
@@ -156,11 +156,19 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.removerRow(TableCliente, tableModel);
+        if (controller.removerRow(TableCliente, tableModel)){
+            controller.popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
+        }else{
+            controller.popUpError(jPanel1, "Não foi possivel deletar o cliente!");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        controller.editRow(TableCliente, tableModel, tfNome, tfIdade);
+        if (controller.editRow(TableCliente, tableModel, tfNome, tfIdade)){
+            controller.popUpSucesso(jPanel1, "Dados editados com sucesso!");
+        }else{
+            controller.popUpError(jPanel1, "Não foi possivel editar os dados do cliente!");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 

@@ -2,6 +2,9 @@ package Controller;
 
 import Model.Cliente;
 import Model.TableModelCliente;
+import java.awt.Component;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -65,8 +68,8 @@ public class ClienteController implements Controller{
     public void salvarArq(){
         ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
     }
-    public void abrirArq(){
-        ArqEscritor.getInstancia().cLoad();
+    public void abrirArq(String path){
+        ArqEscritor.getInstancia().cLoad(path);
         int index = Database.getInstancia().getClientes().size();
         Database.getInstancia().setClienteId(index);
     }

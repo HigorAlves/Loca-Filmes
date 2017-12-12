@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JFileChooser;
 import miscellaneous.Database;
 
 /**
@@ -14,16 +15,18 @@ import miscellaneous.Database;
  */
 public class ArqEscritor {
     private static ArqEscritor instancia = null;
-    private String cFileName = "clientes.csv";
-    File cFile = new File(cFileName);
+    private String cFileName = "";
+    File cFile;
     
     private Cliente cliente;
+    
     private ArqEscritor(){
-        
     }
     
 //Carregar arquivos para classe clientes.
-    public void cLoad(){
+    public void cLoad(String path){
+        cFileName = path;
+        cFile = new File(cFileName);
         try {
             Scanner input = new Scanner(cFile);
             input.nextLine();
@@ -60,6 +63,7 @@ public class ArqEscritor {
             e.printStackTrace();
 	}
     }
+    
     public static ArqEscritor getInstancia(){
         if(instancia  == null){
             instancia = new ArqEscritor();

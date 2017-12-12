@@ -5,12 +5,23 @@
  */
 package View;
 
+import Controller.ClienteController;
+import Controller.FilmeController;
+import Model.TableModelCliente;
+import Model.TableModelFilme;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import miscellaneous.Database;
+import miscellaneous.FabricaAbstrata;
+
 /**
  *
  * @author Higor Alves
  */
 public class FilmeView extends javax.swing.JInternalFrame implements View{
     private static FilmeView instancia = null;
+    private TableModelFilme tableModel = new TableModelFilme(Database.getInstancia().getFilmes());
+    private FilmeController controller = (FilmeController) FabricaAbstrata.getFabrica("filme").criarControle();
     /**
      * Creates new form FilmeView
      */
@@ -27,114 +38,122 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        tfTitulo = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        tfFaixaEtaria = new javax.swing.JTextField();
-        btSalvar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
-        btDeletar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        tfTitulo1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        tfFaixaEtaria1 = new javax.swing.JTextField();
+        btSalvar1 = new javax.swing.JButton();
+        btEditar1 = new javax.swing.JButton();
+        btDeletar1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tableFilme = new javax.swing.JTable();
 
         setClosable(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Titulo:");
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setText("Faixa Etaria");
+        jLabel3.setText("Titulo:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 15, -1, -1));
+        jPanel1.add(tfTitulo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 12, 100, -1));
 
-        btSalvar.setText("Salvar");
+        jLabel4.setText("Faixa Etaria");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 15, -1, -1));
+        jPanel1.add(tfFaixaEtaria1, new org.netbeans.lib.awtextra.AbsoluteConstraints(215, 12, 50, -1));
 
-        btEditar.setText("Editar");
-
-        btDeletar.setText("Deletar");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Titulo", "Faixa Etaria", "Alugado"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Integer.class, java.lang.Boolean.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        btSalvar1.setText("Salvar");
+        btSalvar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalvar1ActionPerformed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jPanel1.add(btSalvar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(271, 11, -1, -1));
 
-        jMenu1.setText("File");
+        btEditar1.setText("Editar");
+        btEditar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btEditar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 11, -1, -1));
 
-        jMenuItem1.setText("Abrir");
-        jMenu1.add(jMenuItem1);
+        btDeletar1.setText("Deletar");
+        btDeletar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btDeletar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(407, 11, -1, -1));
 
-        jMenuItem2.setText("Salvar");
-        jMenu1.add(jMenuItem2);
+        tableFilme.setAutoCreateRowSorter(true);
+        tableFilme.setModel(tableModel);
+        jScrollPane2.setViewportView(tableFilme);
 
-        jMenuBar1.add(jMenu1);
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 464, 283));
 
-        setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tfFaixaEtaria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btSalvar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btEditar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btDeletar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(tfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(tfFaixaEtaria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btSalvar)
-                    .addComponent(btEditar)
-                    .addComponent(btDeletar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btSalvar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvar1ActionPerformed
+        try{
+            if(controller.addRow(tfTitulo1.getText(), Integer.parseInt(tfFaixaEtaria1.getText()))){
+                tableModel.updateTable();
+                tfTitulo1.setText("");
+                tfFaixaEtaria1.setText("");
+                popUpSucesso(jPanel1, "Filme Cadastrado com sucesso!");
+            }else{
+                popUpError(jPanel1, "Não foi possivel Cadastrar", "Filme ja existe ou falta preencher algum campo");
+            }
+        }catch(NumberFormatException e){
+            popUpError(jPanel1, "Error", "Faixa Etaria não pode ser letra!");
+        }
+
+    }//GEN-LAST:event_btSalvar1ActionPerformed
+
+    private void btEditar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditar1ActionPerformed
+        try{
+            if (tableFilme.getSelectedRow() != -1){
+                int id = (int)tableModel.getValueAt(tableFilme.getSelectedRow(), 0);
+                String titulo = (String) tableModel.getValueAt(tableFilme.getSelectedRow(), 1);
+                int faixaEtaria = (int) tableModel.getValueAt(tableFilme.getSelectedRow(), 2);
+                boolean alugado = (boolean) tableModel.getValueAt(tableFilme.getSelectedRow(), 3);
+
+                if(controller.alterarRow(id, titulo, faixaEtaria, alugado, tfTitulo1.getText(), Integer.parseInt(tfFaixaEtaria1.getText()))){
+                    popUpSucesso(jPanel1, "Filme alterado com sucesso.");
+                    tfTitulo1.setText("");
+                    tfFaixaEtaria1.setText("");
+                    tableModel.updateTable();
+                }
+                
+            }
+        }catch (NumberFormatException e){
+            popUpSucesso(jPanel1, "OPA.");
+            System.out.print(e);
+        }
+    }//GEN-LAST:event_btEditar1ActionPerformed
+
+    private void btDeletar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletar1ActionPerformed
+        try{
+            int id = (int) tableModel.getValueAt(tableFilme.getSelectedRow(), 0);
+            if (controller.removerRow(id)){
+                tableModel.updateTable();
+                popUpSucesso(jPanel1, "Filme deletado com sucesso!");
+            }
+        }catch (IndexOutOfBoundsException e){
+            popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum filme!");
+        }
+    }//GEN-LAST:event_btDeletar1ActionPerformed
+
+    private void popUpSucesso(JPanel pane, String mensagem){
+        JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    }
+    private void popUpError(JPanel pane, String titulo, String mensagem){
+        JOptionPane.showMessageDialog(pane, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
+    }
+    
     public static FilmeView getInstancia(){
         if (instancia == null){
             instancia = new FilmeView();
@@ -143,18 +162,15 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btDeletar;
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btSalvar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField tfFaixaEtaria;
-    private javax.swing.JTextField tfTitulo;
+    private javax.swing.JButton btDeletar1;
+    private javax.swing.JButton btEditar1;
+    private javax.swing.JButton btSalvar1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tableFilme;
+    private javax.swing.JTextField tfFaixaEtaria1;
+    private javax.swing.JTextField tfTitulo1;
     // End of variables declaration//GEN-END:variables
 }

@@ -73,6 +73,24 @@ public class Database {
     public boolean addData(Filme filme){
         return filmes.add(filme);
     }
+    public boolean FeditData(Filme filme){
+        if(filmes.contains(filme)){
+            return true;
+        }
+        return false;
+    }
+    public List<Filme> getFilmes(){
+        return filmes;
+    }
+    public boolean removeDataF(int id){
+        for (Filme f: this.filmes){
+            if (f.getId() == id){
+                this.filmes.remove(f);
+                return true;
+            }
+        }
+        return false;
+    }
     
     //METODOS LOCACAO
     

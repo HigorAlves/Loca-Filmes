@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Cliente;
 import Model.Filme;
+import java.util.List;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
@@ -17,7 +18,7 @@ public class FilmeController implements Controller{
                 return false;
             }else{
                 filme = (Filme)FabricaAbstrata.getFabrica("filme").criarModelo();
-                filme.setId(Database.getInstancia().getClienteId());
+                filme.setId(Database.getInstancia().getFilmeId());
                 filme.setNome(titulo);
                 filme.setFaixaEtaria(faixaEtaria);
                 filme.setAlugado(false);
@@ -34,25 +35,27 @@ public class FilmeController implements Controller{
         return true;
     }
     public boolean removerRow(int id){
-        Database.getInstancia().removeData(id);
+        Database.getInstancia().removeDataF(id);
         return true;
     }
-    public boolean alterarRow(int id, String nome, int idade, String newNome, int newIdade){
-        cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
-        cliente.setId(id);
-        cliente.setNome(nome);
-        cliente.setIdade(idade);
+    public boolean alterarRow(int id, String titulo, int faixaEtaria,boolean alugado, String newTitulo, int newFaixaEtaria){
+        filme = (Filme) FabricaAbstrata.getFabrica("filme").criarModelo();
+        filme.setId(id);
+        filme.setNome(titulo);
+        filme.setFaixaEtaria(faixaEtaria);
+        filme.setAlugado(false);
         
-        if (Database.getInstancia().editData(cliente)){
-            int index = Database.getInstancia().getClientes().indexOf(cliente);
-            cliente.setNome(newNome);
-            cliente.setIdade(newIdade);
-            Database.getInstancia().getClientes().set(index, cliente);
+        if (Database.getInstancia().FeditData(filme)){
+            System.out.print("ENtrou");
+            /*int index = Database.getInstancia().getFilmes().indexOf(filme);
+            filme.setNome(newTitulo);
+            filme.setFaixaEtaria(newFaixaEtaria);
+            Database.getInstancia().getFilmes().set(index, filme);*/
             return true;
         }
         return false;
     }
-    
+    //REFAZER
     public void salvarArq(){
         ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
     }

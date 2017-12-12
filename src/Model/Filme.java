@@ -7,6 +7,7 @@ package Model;
 public class Filme implements Model, Comparable<Filme>{
     private int id;
     private String nome;
+    private int faixaEtaria;
     private boolean alugado;
 
     public int getId() {
@@ -31,6 +32,14 @@ public class Filme implements Model, Comparable<Filme>{
 
     public void setAlugado(boolean alugado) {
         this.alugado = alugado;
+    }
+    
+    public int getFaixaEtaria(){
+        return faixaEtaria;
+    }
+    
+    public void setFaixaEtaria(int faixaEtaria){
+        this.faixaEtaria = faixaEtaria;
     }
 
     @Override

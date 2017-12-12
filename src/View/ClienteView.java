@@ -170,16 +170,18 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
                 popUpError(jPanel1, "Não foi possivel Cadastrar", "Cliente ja existe ou falta preencher algum campo");
             }
         }catch(NumberFormatException e){
-            popUpError(jPanel1, "Error", "Idade não pode ser numero!");
+            popUpError(jPanel1, "Error", "Idade não pode ser letra!");
         }
     }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jbDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarActionPerformed
-        int id = (int) tableModel.getValueAt(TableCliente.getSelectedRow(), 0);
-        if (controller.removerRow(id)){
-            tableModel.updateTable();
-            popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
-        }else{
+        try{
+            int id = (int) tableModel.getValueAt(TableCliente.getSelectedRow(), 0);
+            if (controller.removerRow(id)){
+                tableModel.updateTable();
+                popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
+            }
+        }catch (IndexOutOfBoundsException e){
             popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum cliente!");
         }
     }//GEN-LAST:event_jbDeletarActionPerformed

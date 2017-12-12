@@ -1,36 +1,29 @@
 package Controller;
 
 import Model.Cliente;
-import Model.TableModelCliente;
-import java.awt.Component;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import Model.Filme;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
 /**
  * @author Higor Alves
  */
-public class ClienteController implements Controller{
-    private Cliente cliente;
+public class FilmeController implements Controller{
+     private Filme filme;
     
-    public boolean addRow(String nome, int idade){
+    public boolean addRow(String titulo, int faixaEtaria){
         try{
-            if (nome.equals("")){
+            if (titulo.equals("")){
                 return false;
             }else{
-                cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
+                filme = (Filme)FabricaAbstrata.getFabrica("filme").criarModelo();
+                filme.setId(Database.getInstancia().getClienteId());
+                filme.setNome(titulo);
+                filme.setFaixaEtaria(faixaEtaria);
+                filme.setAlugado(false);
             
-                cliente.setId(Database.getInstancia().getClienteId());
-                cliente.setNome(nome);
-                cliente.setIdade(idade);
-            
-                if (Database.getInstancia().addData(cliente)){
-                    Database.getInstancia().setClienteId(1);
+                if (Database.getInstancia().addData(filme)){
+                    Database.getInstancia().setFilmeId(1);
                 }else {
                     return false;
                 }

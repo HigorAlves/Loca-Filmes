@@ -16,7 +16,7 @@ public abstract class FabricaAbstrata {
         if (fabrica.equalsIgnoreCase("cliente")){
             return new ClienteFabrica();
         }else if (fabrica.equalsIgnoreCase("filme")){
-            return null;
+            return new FilmeFabrica();
         }else if(fabrica.equalsIgnoreCase("locacao")){
             return null;
         }else {

@@ -35,7 +35,7 @@ public class Database {
         return this.clienteId;
     }
     public void setClienteId(int id){
-        this.clienteId = id;
+        this.clienteId += id;
     }
     
     public void setClientes(List<Cliente> clientes){
@@ -64,6 +64,15 @@ public class Database {
     }
     
     //METODOS FILMES
+    public int getFilmeId(){
+        return this.filmeId;
+    }
+    public void setFilmeId(int id){
+        this.filmeId += id;
+    }
+    public boolean addData(Filme filme){
+        return filmes.add(filme);
+    }
     
     //METODOS LOCACAO
     

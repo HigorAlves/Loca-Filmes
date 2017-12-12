@@ -6,7 +6,7 @@ package Model;
 public class Cliente extends Pessoa implements Comparable<Cliente>{
     @Override
     public int compareTo(Cliente o) {
-        return id-o.getId();
+        return nome.compareToIgnoreCase(o.getNome());
     }
     
     public boolean equals(Object o){

@@ -14,8 +14,10 @@ public class TableModelCliente extends AbstractTableModel {
     private Database database = Database.getInstancia();
     private String[] colunas = {"ID","Nome","Idade"};
     
-    public TableModelCliente(){
-        clientes.addAll(database.getClientes());
+    public void updateTable(Set<Cliente> clientes){
+        this.clientes.clear();
+        this.clientes.addAll(clientes);
+        this.fireTableDataChanged();
     }
 
     @Override
@@ -65,10 +67,7 @@ public class TableModelCliente extends AbstractTableModel {
         this.fireTableRowsUpdated(linha, linha);
     }
     
-    public void addRow(Cliente cliente){
-        this.clientes.add(cliente);
-        this.fireTableDataChanged();
-    }
+    
     
     public void removeRow(int linha){
         this.clientes.remove(linha);

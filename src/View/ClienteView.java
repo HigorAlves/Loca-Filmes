@@ -37,7 +37,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         tfNome = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tfIdade = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jbSalvar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -58,10 +58,10 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
 
         jLabel4.setText("Idade:");
 
-        jButton1.setText("Salvar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbSalvar.setText("Salvar");
+        jbSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbSalvarActionPerformed(evt);
             }
         });
 
@@ -109,7 +109,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tfIdade, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)
+                        .addComponent(jbSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -124,7 +124,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3)
-                    .addComponent(jButton1)
+                    .addComponent(jbSalvar)
                     .addComponent(tfIdade)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tfNome)
@@ -141,19 +141,19 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSalvarActionPerformed
         if(controller.addRow(tfNome, tfIdade, tableModel)){
             controller.popUpSucesso(jPanel1, "Cliente Cadastrado com sucesso!");
         }else{
-            controller.popUpError(jPanel1, "Não foi possivel cadastrar novo cliente verifique se todos os campos foram preenchidos");
+            controller.popUpError(jPanel1, "Não foi possivel Cadastrar", "Cliente ja existe ou falta preencher algum campo");
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbSalvarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         if (controller.removerRow(TableCliente, tableModel)){
             controller.popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
         }else{
-            controller.popUpError(jPanel1, "Não foi possivel deletar o cliente!");
+            controller.popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum cliente!");
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -161,14 +161,13 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         if (controller.editRow(TableCliente, tableModel, tfNome, tfIdade)){
             controller.popUpSucesso(jPanel1, "Dados editados com sucesso!");
         }else{
-            controller.popUpError(jPanel1, "Não foi possivel editar os dados do cliente!");
+            controller.popUpError(jPanel1, "Não foi possivel editar os dados", "Verifique se você selecionou algum cliente!");
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableCliente;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -177,6 +176,7 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jbSalvar;
     private javax.swing.JTextField tfIdade;
     private javax.swing.JTextField tfNome;
     // End of variables declaration//GEN-END:variables

@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
 /**
@@ -17,9 +18,17 @@ public class ClienteController implements Controller{
     public boolean addRow(JTextField nome, JTextField idade, TableModelCliente tableModel){
         try{
             cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
+            
+            cliente.setId(Database.getInstancia().getId());
             cliente.setNome(nome.getText());
             cliente.setIdade(Integer.parseInt(idade.getText()));
-            tableModel.addRow(cliente);
+            
+            if (Database.getInstancia().addData(cliente)){
+                tableModel.updateTable(Database.getInstancia().getClientes());
+                Database.getInstancia().setId(1);
+            }else {
+                return false;
+            }
         }catch(NumberFormatException e){
             return false;
         }
@@ -27,6 +36,8 @@ public class ClienteController implements Controller{
     }
     public boolean removerRow(JTable table, TableModelCliente tableModel){
         if(table.getSelectedRow() != -1){
+            //Object teste = tableModel.getValueAt(table.getSelectedRow(), 0);
+            //System.out.print(teste);
             tableModel.removeRow(table.getSelectedRow());
             return true;
         }else{
@@ -50,7 +61,7 @@ public class ClienteController implements Controller{
     public void popUpSucesso(JPanel pane, String mensagem){
         JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.OK_OPTION);
     }
-    public void popUpError(JPanel pane, String mensagem){
-        JOptionPane.showMessageDialog(pane, mensagem, "ERROR", JOptionPane.ERROR_MESSAGE);
+    public void popUpError(JPanel pane, String titulo, String mensagem){
+        JOptionPane.showMessageDialog(pane, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
     }
 }

@@ -14,6 +14,7 @@ import java.util.TreeSet;
 public class Database {
     private static Database instancia = null;
     
+    private int id;
     private Set<Cliente> clientes;
     private Set<Filme> filmes;
     private Set<Locacao> locacoes;
@@ -22,13 +23,21 @@ public class Database {
         clientes = new TreeSet<>();
         filmes = new TreeSet<>();
         locacoes = new TreeSet<>();
+        id = 0;
+    }
+    public int getId(){
+        return id;
+    }
+    public void setId(int id){
+        this.id += id;
     }
     
     public Set<Cliente> getClientes(){
         return clientes;
     }
     
-    public void addData(Cliente cliente){
+    public boolean addData(Cliente cliente){
+        return clientes.add(cliente);
     }
     
     public void addData(Filme filme){
@@ -39,8 +48,12 @@ public class Database {
         
     }
     
-    public void removeData(Cliente cliente){
-        
+    public void removeData(Cliente cliente, int id){
+        for (Cliente c: clientes){
+            if (c.getId() == id){
+                clientes.remove(c);
+            }
+        }
     }
     
     public void removeData(Filme filme){

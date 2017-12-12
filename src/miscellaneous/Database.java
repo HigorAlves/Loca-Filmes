@@ -25,7 +25,6 @@ public class Database {
     }
     
     public void addData(Cliente cliente){
-        
     }
     
     public void addData(Filme filme){

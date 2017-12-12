@@ -40,11 +40,11 @@ public class TableModelCliente extends AbstractTableModel {
     public Object getValueAt(int linha, int coluna) {
         switch(coluna){
             case 0:
-                return Database.getInstancia().getClientes().get(linha).getId();
+                return clientes.get(linha).getId();
             case 1:
-                return Database.getInstancia().getClientes().get(linha).getNome();
+                return clientes.get(linha).getNome();
             case 2:
-                return Database.getInstancia().getClientes().get(linha).getIdade();
+                return clientes.get(linha).getIdade();
             default:
                 return null;
         }
@@ -54,13 +54,13 @@ public class TableModelCliente extends AbstractTableModel {
     public void setValueAt(Object valor, int linha, int coluna) {
         switch(coluna){
             case 0:
-                Database.getInstancia().getClientes().get(linha).setId(Integer.parseInt((String)valor));
+                clientes.get(linha).setId(Integer.parseInt((String)valor));
                 break;
             case 1:
-                Database.getInstancia().getClientes().get(linha).setNome((String)valor);
+                clientes.get(linha).setNome((String)valor);
                 break;
             case 2:
-                Database.getInstancia().getClientes().get(linha).setIdade(Integer.parseInt((String)valor));
+                clientes.get(linha).setIdade(Integer.parseInt((String)valor));
                 break;
             default:  
                 break;

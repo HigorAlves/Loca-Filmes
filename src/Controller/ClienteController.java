@@ -15,19 +15,23 @@ import miscellaneous.FabricaAbstrata;
 public class ClienteController implements Controller{
     private Cliente cliente;
     
-    public boolean addRow(String nome, String idade){
+    public boolean addRow(String nome, int idade){
         try{
-            cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
-            
-            cliente.setId(Database.getInstancia().getClienteId());
-            cliente.setNome(nome);
-            cliente.setIdade(Integer.parseInt(idade));
-            
-            if (Database.getInstancia().addData(cliente)){
-                Database.getInstancia().setClienteId(1);
-            }else {
+            if (nome.equals("")){
                 return false;
-            }
+            }else{
+                cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
+            
+                cliente.setId(Database.getInstancia().getClienteId());
+                cliente.setNome(nome);
+                cliente.setIdade(idade);
+            
+                if (Database.getInstancia().addData(cliente)){
+                    Database.getInstancia().setClienteId(attId());
+                }else {
+                    return false;
+                }
+           }
         }catch(NumberFormatException e){
             return false;
         }
@@ -53,11 +57,17 @@ public class ClienteController implements Controller{
         return false;
     }
     
-    //POPUPS PARA MANDAR MENSAGENS DE ERROR OU SUCESSO
-    public void popUpSucesso(JPanel pane, String mensagem){
-        JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    public int attId(){
+        int index = Database.getInstancia().getClientes().size();
+        return index;
     }
-    public void popUpError(JPanel pane, String titulo, String mensagem){
-        JOptionPane.showMessageDialog(pane, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
+    
+    public void salvarArq(){
+        ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
+    }
+    public void abrirArq(){
+        ArqEscritor.getInstancia().cLoad();
+        int index = Database.getInstancia().getClientes().size();
+        Database.getInstancia().setClienteId(index);
     }
 }

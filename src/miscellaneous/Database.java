@@ -29,29 +29,24 @@ public class Database {
         filmeId = 0;
         locacaoId = 0;
     }
+    
+    //METODOS CLIENTES
     public int getClienteId(){
         return this.clienteId;
     }
     public void setClienteId(int id){
-        this.clienteId += id;
+        this.clienteId = id;
     }
     
+    public void setClientes(List<Cliente> clientes){
+        this.clientes.addAll(clientes);
+    }
     public List<Cliente> getClientes(){
         return clientes;
-    }
-    
+    }  
     public boolean addData(Cliente cliente){
         return clientes.add(cliente);
     }
-    
-    public void addData(Filme filme){
-        
-    }
-    
-    public void addData(Locacao locacao){
-        
-    }
-    
     public boolean removeData(int id){
         for (Cliente c: this.clientes){
             if (c.getId() == id){
@@ -60,16 +55,7 @@ public class Database {
             }
         }
         return false;
-    }
-    
-    public void removeData(Filme filme){
-        
-    }
-    
-    public void removeData(Locacao locacao){
-        
-    }
-    
+    }    
     public boolean editData(Cliente cliente){
         if(clientes.contains(cliente)){
             return true;
@@ -77,14 +63,10 @@ public class Database {
         return false;
     }
     
-    public boolean editData(Filme filme, String nome){
-        if(filmes.contains(filme)){
-            filme.setNome(nome);
-            return true;
-        }
-        return false;
-    }
-        
+    //METODOS FILMES
+    
+    //METODOS LOCACAO
+    
     public static Database getInstancia(){
         if (instancia == null){
             instancia = new Database();

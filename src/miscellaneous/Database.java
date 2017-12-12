@@ -24,6 +24,10 @@ public class Database {
         locacoes = new TreeSet<>();
     }
     
+    public Set<Cliente> getClientes(){
+        return clientes;
+    }
+    
     public void addData(Cliente cliente){
     }
     

@@ -2,14 +2,21 @@ package Model;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import javax.swing.table.AbstractTableModel;
+import miscellaneous.Database;
 
 /**
  * @author Higor Alves
  */
 public class TableModelCliente extends AbstractTableModel {
     private List<Cliente> clientes = new LinkedList<>();
+    private Database database = Database.getInstancia();
     private String[] colunas = {"ID","Nome","Idade"};
+    
+    public TableModelCliente(){
+        clientes.addAll(database.getClientes());
+    }
 
     @Override
     public String getColumnName(int column) {

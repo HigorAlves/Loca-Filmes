@@ -10,23 +10,23 @@ package Model;
  * @author Higor Alves
  */
 public class Locacao implements Model, Comparable<Locacao>{
-    private Filme filme;
-    private Cliente cliente;
+    private String filme;
+    private String cliente;
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public String getFilme() {
+        return filme;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setFilme(Filme filme) {
+    public void setFilme(String filme) {
         this.filme = filme;
     }
 
-    public Filme getFilme() {
-        return filme;
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
     }
 
     @Override

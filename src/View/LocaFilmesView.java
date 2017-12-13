@@ -76,6 +76,11 @@ public class LocaFilmesView extends javax.swing.JFrame implements View{
         jMenu4.setText("Locacao");
 
         jMenuItem1.setText("Alugar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem1);
 
         MenuBar.add(jMenu4);
@@ -96,6 +101,12 @@ public class LocaFilmesView extends javax.swing.JFrame implements View{
         view = (FilmeView) FabricaAbstrata.getFabrica("filme").criarView();
         criarPane(view);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        LocacaoView view;
+        view = (LocacaoView) FabricaAbstrata.getFabrica("locacao").criarView();
+        criarPane(view);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

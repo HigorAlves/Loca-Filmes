@@ -17,7 +17,7 @@ public class Database {
     
     private int clienteId;
     private int filmeId;
-    private int locacaoId;
+
     private List<Cliente> clientes;
     private List<Filme> filmes;
     private List<Locacao> locacoes;
@@ -26,9 +26,8 @@ public class Database {
         clientes = new LinkedList<>();
         filmes = new LinkedList<>();
         locacoes = new LinkedList<>();
-        clienteId = 1;
-        filmeId = 1;
-        locacaoId = 1;
+        clienteId = 0;
+        filmeId = 0;
     }
     
     //METODOS CLIENTES
@@ -94,6 +93,22 @@ public class Database {
     }
     
     //METODOS LOCACAO
+     public boolean addData(Locacao locacao){
+        return locacoes.add(locacao);
+    }
+    public boolean lEditData(Locacao locacao){
+        if(locacoes.contains(locacao)){
+            return true;
+        }
+        return false;
+    }
+    public List<Locacao> getLocacaoes(){
+        return locacoes;
+    }
+    public boolean removeDataL(Locacao locacao){
+        locacoes.remove(locacao);
+        return true;
+    }
     
     public static Database getInstancia(){
         if (instancia == null){

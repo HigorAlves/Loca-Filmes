@@ -11,6 +11,8 @@ import Model.Cliente;
 import Model.Filme;
 import Model.TableModelFilme;
 import Model.TableModelLocacao;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
@@ -148,8 +150,12 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         String cliente = (String) comboCliente.getSelectedItem();
         int indexCliente = comboCliente.getSelectedIndex();
         String filme = (String) comboFilme.getSelectedItem();
-        controller.alugar(cliente,indexCliente, filme);
-        tableModel.updateTable();
+        if(controller.alugar(cliente,indexCliente, filme)){
+            tableModel.updateTable();
+            popUpSucesso(jPanel1, "Filme " + filme + " foi alugado com sucesso!");
+        }else{
+            popUpError(jPanel1, "Não foi possivel alugar!", "O cliente não pode alugar este filme.");
+        }
     }//GEN-LAST:event_btAlugarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -158,13 +164,20 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
             int index = tableLocacao.getSelectedRow();
             if (controller.removerRow(filme, index)){
                 tableModel.updateTable();
-                //popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
+                popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
             }
         }catch (IndexOutOfBoundsException e){
-            //popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum cliente!");
+            popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum locação!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+     private void popUpSucesso(JPanel pane, String mensagem){
+        JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+    }
+    private void popUpError(JPanel pane, String titulo, String mensagem){
+        JOptionPane.showMessageDialog(pane, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
+    }
+    
     public static LocacaoView getInstancia(){
         if(instancia == null){
             instancia = new LocacaoView();

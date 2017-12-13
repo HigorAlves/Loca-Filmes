@@ -130,7 +130,7 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
                 
             }
         }catch (NumberFormatException e){
-            popUpSucesso(jPanel1, "OPA.");
+            popUpError(jPanel1, "Error", "Faixa Etaria não pode ser letra!");
             System.out.print(e);
         }
     }//GEN-LAST:event_btEditar1ActionPerformed

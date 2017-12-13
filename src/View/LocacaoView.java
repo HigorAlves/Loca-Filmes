@@ -44,10 +44,10 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         jLabel2 = new javax.swing.JLabel();
         comboFilme = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btAlugar = new javax.swing.JButton();
+        btCarregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableLocacao = new javax.swing.JTable();
 
         setClosable(true);
         setTitle("Locação");
@@ -58,19 +58,29 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
 
         jLabel2.setText("Filme");
 
-        jButton1.setText("Salvar");
-
-        jButton2.setText("Devolver");
-
-        jButton3.setText("Carregar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Devolver");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(tableModel);
-        jScrollPane1.setViewportView(jTable1);
+        btAlugar.setText("Alugar");
+        btAlugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlugarActionPerformed(evt);
+            }
+        });
+
+        btCarregar.setText("Carregar");
+        btCarregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCarregarActionPerformed(evt);
+            }
+        });
+
+        tableLocacao.setModel(tableModel);
+        jScrollPane1.setViewportView(tableLocacao);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,9 +102,9 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(comboFilme, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(jButton3)
+                        .addComponent(btCarregar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btAlugar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -111,8 +121,8 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
                     .addComponent(jLabel2)
                     .addComponent(comboFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(btAlugar)
+                    .addComponent(btCarregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
                 .addContainerGap())
@@ -121,7 +131,7 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btCarregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCarregarActionPerformed
         comboCliente.removeAllItems();
         comboFilme.removeAllItems();
         for(Cliente c: Database.getInstancia().getClientes()){
@@ -132,7 +142,28 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
                 comboFilme.addItem(f.getNome());
             }
         }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btCarregarActionPerformed
+
+    private void btAlugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlugarActionPerformed
+        String cliente = (String) comboCliente.getSelectedItem();
+        int indexCliente = comboCliente.getSelectedIndex();
+        String filme = (String) comboFilme.getSelectedItem();
+        controller.alugar(cliente,indexCliente, filme);
+        tableModel.updateTable();
+    }//GEN-LAST:event_btAlugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try{
+            String filme = (String) tableModel.getValueAt(tableLocacao.getSelectedRow(), 1);
+            int index = tableLocacao.getSelectedRow();
+            if (controller.removerRow(filme, index)){
+                tableModel.updateTable();
+                //popUpSucesso(jPanel1, "Cliente deletado com sucesso!");
+            }
+        }catch (IndexOutOfBoundsException e){
+            //popUpError(jPanel1, "Não foi possivel deletar", "Verifique se você selecionou algum cliente!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static LocacaoView getInstancia(){
         if(instancia == null){
@@ -141,15 +172,15 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         return instancia;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAlugar;
+    private javax.swing.JButton btCarregar;
     private javax.swing.JComboBox<String> comboCliente;
     private javax.swing.JComboBox<String> comboFilme;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tableLocacao;
     // End of variables declaration//GEN-END:variables
 }

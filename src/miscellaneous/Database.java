@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.lang.NumberFormatException;
 
 /**
  * @author Higor Alves
@@ -25,9 +26,9 @@ public class Database {
         clientes = new LinkedList<>();
         filmes = new LinkedList<>();
         locacoes = new LinkedList<>();
-        clienteId = 0;
-        filmeId = 0;
-        locacaoId = 0;
+        clienteId = 1;
+        filmeId = 1;
+        locacaoId = 1;
     }
     
     //METODOS CLIENTES

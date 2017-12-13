@@ -42,7 +42,7 @@ public class TableModelFilme extends AbstractTableModel{
             case 2:
                 return filmes.get(linha).getFaixaEtaria();
             case 3:
-                return filmes.get(linha).isAlugado();
+                return filmes.get(linha).getAlugado();
             default:
                 return null;
         }
@@ -61,7 +61,7 @@ public class TableModelFilme extends AbstractTableModel{
                 filmes.get(linha).setFaixaEtaria(Integer.parseInt((String)valor));
                 break;
             case 3:
-                filmes.get(linha).setAlugado(Boolean.parseBoolean((String) valor));
+                filmes.get(linha).setAlugado((String) valor);
                 break;
             default:  
                 break;

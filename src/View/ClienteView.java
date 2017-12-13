@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
+import java.lang.NumberFormatException;
 
 /**
  *

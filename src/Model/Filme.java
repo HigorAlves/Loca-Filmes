@@ -8,7 +8,7 @@ public class Filme implements Model, Comparable<Filme>{
     private int id;
     private String nome;
     private int faixaEtaria;
-    private boolean alugado;
+    private String alugado;
 
     public int getId() {
         return id;
@@ -26,11 +26,11 @@ public class Filme implements Model, Comparable<Filme>{
         this.nome = nome;
     }
 
-    public boolean isAlugado() {
+    public String getAlugado() {
         return alugado;
     }
 
-    public void setAlugado(boolean alugado) {
+    public void setAlugado(String alugado) {
         this.alugado = alugado;
     }
     
@@ -48,7 +48,7 @@ public class Filme implements Model, Comparable<Filme>{
     }
     
     public boolean equals(Object o){
-        if (o instanceof Cliente){
+        if (o instanceof Filme){
             return nome.equalsIgnoreCase(((Filme) o).getNome());
         }
         return false;

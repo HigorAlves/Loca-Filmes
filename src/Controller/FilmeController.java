@@ -1,10 +1,10 @@
 package Controller;
 
-import Model.Cliente;
 import Model.Filme;
-import java.util.List;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
+import java.lang.NumberFormatException;
+
 
 /**
  * @author Higor Alves
@@ -21,7 +21,7 @@ public class FilmeController implements Controller{
                 filme.setId(Database.getInstancia().getFilmeId());
                 filme.setNome(titulo);
                 filme.setFaixaEtaria(faixaEtaria);
-                filme.setAlugado(false);
+                filme.setAlugado("falso");
             
                 if (Database.getInstancia().addData(filme)){
                     Database.getInstancia().setFilmeId(1);
@@ -38,19 +38,18 @@ public class FilmeController implements Controller{
         Database.getInstancia().removeDataF(id);
         return true;
     }
-    public boolean alterarRow(int id, String titulo, int faixaEtaria,boolean alugado, String newTitulo, int newFaixaEtaria){
+    public boolean alterarRow(int id, String titulo, int faixaEtaria,String alugado, String newTitulo, int newFaixaEtaria){
         filme = (Filme) FabricaAbstrata.getFabrica("filme").criarModelo();
         filme.setId(id);
         filme.setNome(titulo);
         filme.setFaixaEtaria(faixaEtaria);
-        filme.setAlugado(false);
+        filme.setAlugado(alugado);
         
         if (Database.getInstancia().FeditData(filme)){
-            System.out.print("ENtrou");
-            /*int index = Database.getInstancia().getFilmes().indexOf(filme);
+            int index = Database.getInstancia().getFilmes().indexOf(filme);
             filme.setNome(newTitulo);
             filme.setFaixaEtaria(newFaixaEtaria);
-            Database.getInstancia().getFilmes().set(index, filme);*/
+            Database.getInstancia().getFilmes().set(index, filme);
             return true;
         }
         return false;

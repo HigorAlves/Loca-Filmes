@@ -119,7 +119,7 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
                 int id = (int)tableModel.getValueAt(tableFilme.getSelectedRow(), 0);
                 String titulo = (String) tableModel.getValueAt(tableFilme.getSelectedRow(), 1);
                 int faixaEtaria = (int) tableModel.getValueAt(tableFilme.getSelectedRow(), 2);
-                boolean alugado = (boolean) tableModel.getValueAt(tableFilme.getSelectedRow(), 3);
+                String alugado = (String) tableModel.getValueAt(tableFilme.getSelectedRow(), 3);
 
                 if(controller.alterarRow(id, titulo, faixaEtaria, alugado, tfTitulo1.getText(), Integer.parseInt(tfFaixaEtaria1.getText()))){
                     popUpSucesso(jPanel1, "Filme alterado com sucesso.");

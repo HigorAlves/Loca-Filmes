@@ -1,14 +1,6 @@
 package Controller;
 
 import Model.Cliente;
-import Model.TableModelCliente;
-import java.awt.Component;
-import java.io.File;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
@@ -45,7 +37,7 @@ public class ClienteController implements Controller{
         return true;
     }
     public boolean alterarRow(int id, String nome, int idade, String newNome, int newIdade){
-        cliente = (Cliente)FabricaAbstrata.getFabrica("cliente").criarModelo();
+        cliente = (Cliente) FabricaAbstrata.getFabrica("cliente").criarModelo();
         cliente.setId(id);
         cliente.setNome(nome);
         cliente.setIdade(idade);

@@ -56,7 +56,7 @@ public class FilmeController implements Controller{
     }
     //REFAZER
     public void salvarArq(){
-        ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
+        //ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
     }
     public void abrirArq(String path){
         ArqEscritor.getInstancia().cLoad(path);

@@ -4,6 +4,7 @@ import Controller.ArqEscritor;
 import Controller.ClienteController;
 import Model.Cliente;
 import Model.TableModelCliente;
+import java.awt.FileDialog;
 import java.io.File;
 import java.util.ConcurrentModificationException;
 import javax.swing.JFileChooser;
@@ -208,7 +209,17 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
     }//GEN-LAST:event_jbEditarActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        controller.salvarArq();
+        
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Onde você deseja salvar?");   
+ 
+        int userSelection = fileChooser.showSaveDialog(jPanel1);
+ 
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            controller.salvarArq(fileToSave.getAbsolutePath());
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

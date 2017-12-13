@@ -45,7 +45,9 @@ public class ArqEscritor {
 }
 
     //Salvar dados dos clientes no arquivo.
-    public void cSave(List<Cliente> clientes) {		
+    public void cSave(List<Cliente> clientes, String path) {		
+        cFileName = path;
+        cFile = new File(cFileName);
         try {
             if(!cFile.exists()) {
                 cFile.createNewFile();

@@ -52,8 +52,8 @@ public class ClienteController implements Controller{
         return false;
     }
     
-    public void salvarArq(){
-        ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
+    public void salvarArq(String path){
+        ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes(), path);
     }
     public void abrirArq(String path){
         ArqEscritor.getInstancia().cLoad(path);

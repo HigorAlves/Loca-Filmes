@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/GitHub/Loca-Filmes/src/View/LocacaoView.java</file>
-            <file>file:/D:/GitHub/Loca-Filmes/src/View/FilmeView.java</file>
+            <file>file:/D:/GitHub/Loca-Filmes/test/Controller/ClienteControllerTest.java</file>
+            <file>file:/D:/GitHub/Loca-Filmes/src/Controller/LocacaoController.java</file>
+            <file>file:/D:/GitHub/Loca-Filmes/test/Controller/FilmeControllerTest.java</file>
+            <file>file:/D:/GitHub/Loca-Filmes/test/Controller/LocacaoControllerTest.java</file>
         </group>
     </open-files>
 </project-private>

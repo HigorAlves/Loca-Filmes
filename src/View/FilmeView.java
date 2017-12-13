@@ -53,8 +53,8 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
         tableFilme = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miAbrir = new javax.swing.JMenuItem();
+        miSalvar = new javax.swing.JMenuItem();
 
         setClosable(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,21 +103,21 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Abrir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        miAbrir.setText("Abrir");
+        miAbrir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                miAbrirActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(miAbrir);
 
-        jMenuItem2.setText("Salvar");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        miSalvar.setText("Salvar");
+        miSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                miSalvarActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        jMenu1.add(miSalvar);
 
         jMenuBar1.add(jMenu1);
 
@@ -176,20 +176,7 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
         }
     }//GEN-LAST:event_btDeletar1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        JFileChooser fileChooser = new JFileChooser();
-        fileChooser.setDialogTitle("Onde você deseja salvar?");   
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
-        fileChooser.setFileFilter(filter);
-        int userSelection = fileChooser.showSaveDialog(jPanel1);
- 
-        if (userSelection == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fileChooser.getSelectedFile();
-            controller.salvarArq(fileToSave.getAbsolutePath());
-        }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void miAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miAbrirActionPerformed
         try{
             String path = null;
             JFileChooser filechooser = new JFileChooser();
@@ -206,9 +193,21 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
             controller.abrirArq(path);
             tableModel.updateTable();
         }catch(NullPointerException e){
-            
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_miAbrirActionPerformed
+
+    private void miSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miSalvarActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Onde você deseja salvar?");   
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+        fileChooser.setFileFilter(filter);
+        int userSelection = fileChooser.showSaveDialog(jPanel1);
+ 
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            controller.salvarArq(fileToSave.getAbsolutePath());
+        }
+    }//GEN-LAST:event_miSalvarActionPerformed
 
     private void popUpSucesso(JPanel pane, String mensagem){
         JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
@@ -232,10 +231,10 @@ public class FilmeView extends javax.swing.JInternalFrame implements View{
     private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JMenuItem miAbrir;
+    private javax.swing.JMenuItem miSalvar;
     private javax.swing.JTable tableFilme;
     private javax.swing.JTextField tfFaixaEtaria1;
     private javax.swing.JTextField tfTitulo1;

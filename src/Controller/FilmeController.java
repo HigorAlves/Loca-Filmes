@@ -54,13 +54,13 @@ public class FilmeController implements Controller{
         }
         return false;
     }
-    //REFAZER
-    public void salvarArq(){
-        //ArqEscritor.getInstancia().cSave(Database.getInstancia().getClientes());
+
+    public void salvarArq(String path){
+        ArqEscritor.getInstancia().fSave(Database.getInstancia().getFilmes(), path);
     }
     public void abrirArq(String path){
-        ArqEscritor.getInstancia().cLoad(path);
-        int index = Database.getInstancia().getClientes().size();
-        Database.getInstancia().setClienteId(index);
+        ArqEscritor.getInstancia().fLoad(path);
+        int index = Database.getInstancia().getFilmes().size();
+        Database.getInstancia().setFilmeId(index);
     }
 }

@@ -11,8 +11,11 @@ import Model.Cliente;
 import Model.Filme;
 import Model.TableModelFilme;
 import Model.TableModelLocacao;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import miscellaneous.Database;
 import miscellaneous.FabricaAbstrata;
 
@@ -50,6 +53,10 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         btCarregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableLocacao = new javax.swing.JTable();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setClosable(true);
         setTitle("Locação");
@@ -83,6 +90,28 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
 
         tableLocacao.setModel(tableModel);
         jScrollPane1.setViewportView(tableLocacao);
+
+        jMenu1.setText("File");
+
+        jMenuItem1.setText("Abrir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuItem2.setText("Salvar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,7 +155,7 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
                     .addComponent(btAlugar)
                     .addComponent(btCarregar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -171,6 +200,40 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        try{
+            String path = null;
+            JFileChooser filechooser = new JFileChooser();
+            filechooser.setDialogTitle("Procurar base de dados do Filme");
+            filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+            filechooser.setFileFilter(filter);
+            int retorno = filechooser.showOpenDialog(this);
+
+            if(retorno == JFileChooser.APPROVE_OPTION){
+                File file = filechooser.getSelectedFile();
+                path = file.getAbsolutePath();
+            }
+            controller.abrirArq(path);
+            tableModel.updateTable();
+        }catch(NullPointerException e){
+            
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Onde você deseja salvar?");   
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+        fileChooser.setFileFilter(filter);
+        int userSelection = fileChooser.showSaveDialog(jPanel1);
+ 
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            controller.salvarArq(fileToSave.getAbsolutePath());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
      private void popUpSucesso(JPanel pane, String mensagem){
         JOptionPane.showMessageDialog(pane,mensagem, "Sucesso", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -192,6 +255,10 @@ public class LocacaoView extends javax.swing.JInternalFrame implements View{
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableLocacao;

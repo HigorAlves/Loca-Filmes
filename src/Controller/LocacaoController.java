@@ -44,4 +44,12 @@ public class LocacaoController implements Controller{
         }
         return false;
     }
+    
+    public void salvarArq(String path){
+        ArqEscritor.getInstancia().lSave(Database.getInstancia().getLocacaoes(), path);
+    }
+    public void abrirArq(String path){
+        ArqEscritor.getInstancia().lLoad(path);
+        int index = Database.getInstancia().getLocacaoes().size();
+    }
 }

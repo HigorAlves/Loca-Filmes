@@ -212,31 +212,35 @@ public class ClienteView extends javax.swing.JInternalFrame implements View {
         
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Onde você deseja salvar?");   
- 
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+        fileChooser.setFileFilter(filter);
         int userSelection = fileChooser.showSaveDialog(jPanel1);
  
         if (userSelection == JFileChooser.APPROVE_OPTION) {
             File fileToSave = fileChooser.getSelectedFile();
             controller.salvarArq(fileToSave.getAbsolutePath());
-            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        String path = null;
-        JFileChooser filechooser = new JFileChooser();
-        filechooser.setDialogTitle("Procurar base de dados do cliente");
-        filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
-        filechooser.setFileFilter(filter);
-        int retorno = filechooser.showOpenDialog(this);
-        
-        if(retorno == JFileChooser.APPROVE_OPTION){
-            File file = filechooser.getSelectedFile();
-            path = file.getAbsolutePath();
+        try{
+            String path = null;
+            JFileChooser filechooser = new JFileChooser();
+            filechooser.setDialogTitle("Procurar base de dados do cliente");
+            filechooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("csv", "csv");
+            filechooser.setFileFilter(filter);
+            int retorno = filechooser.showOpenDialog(this);
+
+            if(retorno == JFileChooser.APPROVE_OPTION){
+                File file = filechooser.getSelectedFile();
+                path = file.getAbsolutePath();
+            }
+            controller.abrirArq(path);
+            tableModel.updateTable();
+        }catch(NullPointerException e){
+            
         }
-        controller.abrirArq(path);
-        tableModel.updateTable();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     //POPUPS PARA MANDAR MENSAGENS DE ERROR OU SUCESSO
